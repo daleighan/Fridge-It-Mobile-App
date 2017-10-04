@@ -24,8 +24,7 @@ class Login extends Component {
 	emailSignin() {
     let user = this.state.usernameText;
     let pw = this.state.passwordText;
-    // let pw = document.getElementById('inputPW');
-    console.log(user)
+
     this.props.actions.emailLogin(user, pw);
   };
 
