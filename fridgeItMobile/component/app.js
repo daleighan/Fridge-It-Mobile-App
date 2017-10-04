@@ -26,7 +26,7 @@ class App extends Component {
 		if(AsyncStorage.getItem('userid') === null) {
       return (
         <View>
-        	<HomeView history={this.props.history}/>
+        	<HomeView history={this.props.history} />
         </View>
       )
     } else {

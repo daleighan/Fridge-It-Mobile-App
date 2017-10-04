@@ -29,7 +29,7 @@ export default class fridgeItMobile extends Component {
       <View style={styles.container}>
       <Provider store={store}>
         <Router history={history}>
-          <App />
+          <App history={history} />
         </Router>
       </Provider>
       </View>

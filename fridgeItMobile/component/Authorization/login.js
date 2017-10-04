@@ -23,13 +23,13 @@ class Login extends Component {
 		}
 	}
 
-	emailSignin() {
+	emailSignin = ({history}) => {
     let user = this.state.usernameText;
     let pw = this.state.passwordText;
     this.props.actions.emailLogin(user, pw);
-  };
+  }
 
-	render() {
+	render(props) {
 		return (
 			<View>
 				<Text>Login</Text>
@@ -37,7 +37,7 @@ class Login extends Component {
 					<TextInput onChangeText={(text) => this.setState({ usernameText: text })} />
 				<Text>Password</Text>
 					<TextInput secureTextEntry={true} onChangeText={(text) => this.setState({ passwordText: text})} />
-				<Button onPress={this.emailSignin.bind(this)} title="submit" />
+				<Button onPress={this.emailSignin} title="submit" />
 				<Text>Don't have an account yet?</Text>
 				<Link to="/signup">
         	<Text>Signup</Text>

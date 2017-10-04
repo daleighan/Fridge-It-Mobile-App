@@ -18,7 +18,6 @@ class HomeView extends Component {
 	}
 
 	render = () => {
-		console.log(this.props.history)
 		return (
 			<View>				
 				<NativeRouter history={this.props.history}>

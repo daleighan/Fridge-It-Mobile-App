@@ -6,15 +6,22 @@ import {
   View, 
   Image
 } from 'react-native';
-import { Router, Route, Link, Redirect, NativeRouter } from 'react-router-native';
+import { 
+  Router, 
+  Route, 
+  Link, 
+  Redirect, 
+  NativeRouter,
+  nativeHistory
+} from 'react-router-native';
 import Login from '../Authorization/login.js';
 import SignUp from '../Authorization/signup.js';
 
 
-const FixedMenu = (props) => {	
+const FixedMenu = () => {
 	return(	
 	<View>				
-    <NativeRouter>
+    <NativeRouter history={nativeHistory}>
     	<View>
     		<Image
           style={{width: 50, height: 50}}
@@ -26,8 +33,8 @@ const FixedMenu = (props) => {
         <Link to="/signup">
         	<Text>Signup</Text>
         </Link>
-        <Route path="/login" render={() => (<Login />)} />
-        <Route path="/signup" render={() => (<SignUp />)} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
     	</View>
     </NativeRouter>
 	</View>
