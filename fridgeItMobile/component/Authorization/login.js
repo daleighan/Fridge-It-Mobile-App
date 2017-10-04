@@ -5,7 +5,8 @@ import {
   Text,
   View, 
   Image,
-  TextInput
+  TextInput,
+  Button
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -14,13 +15,18 @@ import * as authActions from '../../actions/authActions.js'
 class Login extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			usernameText: '',
+			passwordText: ''
+		}
 	}
 
 	emailSignin() {
-    // let user = document.getElementById('inputNM');
+    let user = this.state.usernameText;
+    let pw = this.state.passwordText;
     // let pw = document.getElementById('inputPW');
-    
-    this.props.actions.emailLogin(user.value, pw.value);
+    console.log(user)
+    this.props.actions.emailLogin(user, pw);
   };
 
 	render() {
@@ -28,9 +34,10 @@ class Login extends Component {
 			<View>
 				<Text>Login</Text>
 				<Text>Username</Text>
-					<TextInput />
+					<TextInput onChangeText={(text) => this.setState({ usernameText: text })} />
 				<Text>Password</Text>
-					<TextInput />
+					<TextInput onChangeText={(text) => this.setState({ passwordText: text})} />
+				<Button onPress={this.emailSignin.bind(this)} title="submit" />
 			</View>
 		)
 	}
