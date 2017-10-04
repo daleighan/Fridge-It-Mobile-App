@@ -7,6 +7,9 @@ import {
   Image
 } from 'react-native';
 import { Router, Route, Link, Redirect, NativeRouter } from 'react-router-native';
+import Login from '../Authorization/login.js';
+import SignUp from '../Authorization/signup.js';
+
 
 const FixedMenu = (props) => {	
 	return(	
@@ -21,10 +24,10 @@ const FixedMenu = (props) => {
         	<Text>Login</Text>
         </Link>
         <Link to="/signup">
-        	<Text>Logout</Text>
+        	<Text>Signup</Text>
         </Link>
-        <Route path="/login" render={() => (<Text>Login</Text>)} />
-        <Route path="/signup" render={() => (<Text>Logout</Text>)} />
+        <Route path="/login" render={() => (<Login />)} />
+        <Route path="/signup" render={() => (<SignUp />)} />
     	</View>
     </NativeRouter>
 	</View>

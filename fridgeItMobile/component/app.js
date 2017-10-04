@@ -22,7 +22,7 @@ class App extends Component {
 	}
 
 	render = () => {
-		console.log(AsyncStorage.getItem('userid'))
+		// when complete change this back
 		if(AsyncStorage.getItem('userid') === null) {
       return (
         <View>
