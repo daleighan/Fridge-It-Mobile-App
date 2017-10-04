@@ -1,7 +1,9 @@
 import { AsyncStorage }  from 'react-native';
-
 import firebase, { auth, googleProvider } from '../firebase/config.js';
 import { push } from 'react-router-redux';
+
+
+//This google login will not work on react-native
 
 //Google log in and sign up function from firebase docs. Stores relevant info onto the localStorage object.
 // export const googleLogin = () => {
@@ -33,6 +35,7 @@ export const emailLogin = (email, pw) => {
           AsyncStorage.setItem('userid', result.uid).then(() => {
             dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
             dispatch(push('/'));
+            alert('you are now logged in!');
           });
         });// Calls on authReducers.js to create the new state.
       })
@@ -77,6 +80,7 @@ export const emailSignUp = (email, pw) => {
           AsyncStorage.setItem('userid', result.uid).then(() => {
             dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
             dispatch(push('/'));
+            alert('new account created');
           });
         });
         // Calls on authReducers.js to create the new state.
