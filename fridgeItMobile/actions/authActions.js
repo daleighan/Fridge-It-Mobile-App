@@ -1,6 +1,7 @@
+import AsyncStorage from 'react-native';
+
 import firebase, { auth, googleProvider } from '../firebase/config.js';
 import { push } from 'react-router-redux';
-import localStorage from 'react-native-local-storage';
 
 //Google log in and sign up function from firebase docs. Stores relevant info onto the localStorage object.
 export const googleLogin = () => {
@@ -10,8 +11,8 @@ export const googleLogin = () => {
         const token = result.credential.accessToken;
         const user = result.user;
         let name = user.displayName === null ? user.email : user.displayName;
-        localStorage.setItem('name', name);
-        localStorage.setItem('userid', user.uid);
+        AsyncStorage.setItem('name', name);
+        AsyncStorage.setItem('userid', user.uid);
         // Calls on authReducers.js to create the new state.
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: name});
         dispatch(push('/home'));
@@ -28,8 +29,8 @@ export const emailLogin = (email, pw) => {
   return function(dispatch) {
     firebase.auth().signInWithEmailAndPassword(email, pw)
       .then(result => {
-        localStorage.setItem('name', result.email)
-        localStorage.setItem('userid', result.uid)
+        AsyncStorage.setItem('name', result.email)
+        AsyncStorage.setItem('userid', result.uid)
         // Calls on authReducers.js to create the new state.
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
         dispatch(push('/home'));
@@ -46,10 +47,10 @@ export const logoutUser = () => {
   return function(dispatch) {
     auth.signOut()
       .then(() => {
-        localStorage.removeItem('userid');
-        localStorage.removeItem('name');
-        localStorage.removeItem('fId');
-        localStorage.removeItem('visitorId');
+        AsyncStorage.removeItem('userid');
+        AsyncStorage.removeItem('name');
+        AsyncStorage.removeItem('fId');
+        AsyncStorage.removeItem('visitorId');
         // Calls on authReducers.js to create the new state.
         dispatch({type: 'USER_LOGOUT_FULFILLED'});
         dispatch(push('/'));
@@ -67,8 +68,8 @@ export const emailSignUp = (email, pw) => {
   return function(dispatch) {    
     firebase.auth().createUserWithEmailAndPassword(email, pw)
       .then(result => {
-        localStorage.setItem('name', result.email);
-        localStorage.setItem('userid', result.uid);
+        AsyncStorage.setItem('name', result.email);
+        AsyncStorage.setItem('userid', result.uid);
         // Calls on authReducers.js to create the new state.
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
         dispatch(push('/home'));
