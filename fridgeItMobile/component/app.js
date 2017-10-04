@@ -22,8 +22,8 @@ class App extends Component {
 	}
 
 	render = () => {
-		const value = AsyncStorage.getItem('userid');
-		if(value === null) {
+		console.log(AsyncStorage.getItem('userid'))
+		if(AsyncStorage.getItem('userid') === null) {
       return (
         <View>
         	<HomeView />
