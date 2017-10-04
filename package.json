@@ -5,6 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "adb": "^0.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-native": "^4.2.0",
+    "redux-persist": "^4.10.1",
+    "redux-promise-middleware": "^4.4.1",
     "watchman": "^0.1.8"
   },
   "devDependencies": {},

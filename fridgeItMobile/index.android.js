@@ -17,13 +17,14 @@ import {
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore, compose } from 'redux';
 import createHistory from 'history/createMemoryHistory';
-import { Router } from 'react-router-dom';
+import { Router } from 'react-router-native';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { createLogger as logger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
 
 import FridgeApp from './reducers';
+import App from './component/app.js';
 
 const history = createHistory();
 const middleware = applyMiddleware(promise(), thunk, logger(), routerMiddleware(history));
@@ -34,7 +35,11 @@ export default class fridgeItMobile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>is it still here</Text>
+      <Provider store={store}>
+        <Router history={history}>
+          <App />
+        </Router>
+      </Provider>
       </View>
     );
   }
