@@ -28,10 +28,10 @@ class Signup extends Component {
 		return (
 			<View>
 				<Text>Signup</Text>
-				<Text>Username</Text>
+				<Text>E-mail</Text>
 					<TextInput onChangeText={(text) => this.setState({ usernameText: text })} />
 				<Text>Password</Text>
-					<TextInput onChangeText={(text) => this.setState({ passwordText: text})} />
+					<TextInput secureTextEntry={true} onChangeText={(text) => this.setState({ passwordText: text})} />
 				<Button onPress={this.emailSignUp.bind(this)} title="submit" />
 				<Text>Already have an account?</Text>
 				<Link to="/login">
