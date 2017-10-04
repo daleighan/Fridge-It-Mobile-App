@@ -1,8 +1,8 @@
 import firebase, { auth, googleProvider } from '../firebase/config.js';
 import { push } from 'react-router-redux';
-import AsyncStorage from 'react-native';
+import { AsyncStorage } from 'react-native';
 
-Google log in and sign up function from firebase docs. Stores relevant info onto the localStorage object.
+//Google log in and sign up function from firebase docs. Stores relevant info onto the localStorage object.
 export const googleLogin = () => {
   return function(dispatch) {
     auth.signInWithPopup(googleProvider) 
@@ -64,7 +64,8 @@ export const logoutUser = () => {
 
 // Email sign up function. Stores relevant info onto the localStorage object.
 export const emailSignUp = (email, pw) => {
-  return function(dispatch) {    
+  return function(dispatch) {
+  	console.log(dispatch)    
     firebase.auth().createUserWithEmailAndPassword(email, pw)
       .then(result => {
         AsyncStorage.setItem('name', result.email);

@@ -1,39 +1,40 @@
-import AsyncStorage from 'react-native';
+import { AsyncStorage }  from 'react-native';
 
 import firebase, { auth, googleProvider } from '../firebase/config.js';
 import { push } from 'react-router-redux';
 
 //Google log in and sign up function from firebase docs. Stores relevant info onto the localStorage object.
-export const googleLogin = () => {
-  return function(dispatch) {
-    auth.signInWithPopup(googleProvider) 
-      .then((result) => {
-        const token = result.credential.accessToken;
-        const user = result.user;
-        let name = user.displayName === null ? user.email : user.displayName;
-        AsyncStorage.setItem('name', name);
-        AsyncStorage.setItem('userid', user.uid);
-        // Calls on authReducers.js to create the new state.
-        dispatch({type: 'USER_LOGIN_FULFILLED', payload: name});
-        dispatch(push('/home'));
-      })
-      .catch(function(error) {
-        alert(error.message);
-        dispatch({type: 'USER_LOGIN_REJECTED', payload: error.message});
-      });
-  };
-};
+// export const googleLogin = () => {
+//   return function(dispatch) {
+//     auth.signInWithPopup(googleProvider) 
+//       .then((result) => {
+//         const token = result.credential.accessToken;
+//         const user = result.user;
+//         let name = user.displayName === null ? user.email : user.displayName;
+//         AsyncStorage.setItem('name', name);
+//         AsyncStorage.setItem('userid', user.uid);
+//         // Calls on authReducers.js to create the new state.
+//         dispatch({type: 'USER_LOGIN_FULFILLED', payload: name});
+//         dispatch(push('/'));
+//       })
+//       .catch(function(error) {
+//         alert(error.message);
+//         dispatch({type: 'USER_LOGIN_REJECTED', payload: error.message});
+//       });
+//   };
+// };
 
 // Email log in function. Stores relevant info onto the localStorage object.
 export const emailLogin = (email, pw) => {
   return function(dispatch) {
     firebase.auth().signInWithEmailAndPassword(email, pw)
       .then(result => {
-        AsyncStorage.setItem('name', result.email)
-        AsyncStorage.setItem('userid', result.uid)
-        // Calls on authReducers.js to create the new state.
-        dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
-        dispatch(push('/home'));
+        AsyncStorage.setItem('name', result.email).then(() => {
+          AsyncStorage.setItem('userid', result.uid).then(() => {
+            dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
+            dispatch(push('/'));
+          });
+        });// Calls on authReducers.js to create the new state.
       })
       .catch((error) => {
         alert(errorMsgs[error.message]);        
@@ -47,14 +48,18 @@ export const logoutUser = () => {
   return function(dispatch) {
     auth.signOut()
       .then(() => {
-        AsyncStorage.removeItem('userid');
-        AsyncStorage.removeItem('name');
-        AsyncStorage.removeItem('fId');
-        AsyncStorage.removeItem('visitorId');
+        AsyncStorage.removeItem('userid').then(() => {
+          AsyncStorage.removeItem('name').then(() => {
+            AsyncStorage.removeItem('fId').then(() => {
+              AsyncStorage.removeItem('visitorId').then(() => {
+                dispatch({type: 'USER_LOGOUT_FULFILLED'});
+                dispatch(push('/'));
+                location.reload();
+              });
+            });
+          });
+        });
         // Calls on authReducers.js to create the new state.
-        dispatch({type: 'USER_LOGOUT_FULFILLED'});
-        dispatch(push('/'));
-        location.reload();
       })
       .catch((error) => {
         alert(error.message);        
@@ -68,11 +73,13 @@ export const emailSignUp = (email, pw) => {
   return function(dispatch) {    
     firebase.auth().createUserWithEmailAndPassword(email, pw)
       .then(result => {
-        AsyncStorage.setItem('name', result.email);
-        AsyncStorage.setItem('userid', result.uid);
+        AsyncStorage.setItem('name', result.email).then(() => {
+          AsyncStorage.setItem('userid', result.uid).then(() => {
+            dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
+            dispatch(push('/'));
+          });
+        });
         // Calls on authReducers.js to create the new state.
-        dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
-        dispatch(push('/home'));
       })
       .catch(function(error) {
         alert(error.message);        

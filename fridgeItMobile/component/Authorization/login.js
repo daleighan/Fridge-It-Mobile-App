@@ -6,11 +6,13 @@ import {
   View, 
   Image,
   TextInput,
-  Button
+  Button,
+  AsyncStorage
 } from 'react-native';
+import { Link } from 'react-router-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as authActions from '../../actions/authActions.js'
+import * as authActions from '../../actions/authActions.js';
 
 class Login extends Component {
 	constructor(props) {
@@ -24,7 +26,6 @@ class Login extends Component {
 	emailSignin() {
     let user = this.state.usernameText;
     let pw = this.state.passwordText;
-
     this.props.actions.emailLogin(user, pw);
   };
 
@@ -37,6 +38,10 @@ class Login extends Component {
 				<Text>Password</Text>
 					<TextInput onChangeText={(text) => this.setState({ passwordText: text})} />
 				<Button onPress={this.emailSignin.bind(this)} title="submit" />
+				<Text>Don't have an account yet?</Text>
+				<Link to="/signup">
+        	<Text>Signup</Text>
+        </Link>
 			</View>
 		)
 	}
