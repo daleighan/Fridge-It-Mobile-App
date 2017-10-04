@@ -1,7 +1,8 @@
 import firebase, { auth, googleProvider } from '../firebase/config.js';
 import { push } from 'react-router-redux';
+import localStorage from 'react-native-local-storage';
 
-// Google log in and sign up function from firebase docs. Stores relevant info onto the localStorage object.
+//Google log in and sign up function from firebase docs. Stores relevant info onto the localStorage object.
 export const googleLogin = () => {
   return function(dispatch) {
     auth.signInWithPopup(googleProvider) 
@@ -92,3 +93,4 @@ const errorMsgs = {
 "There is no user record corresponding to this identifier. The user may have been deleted.": 'Password and/or email address is incorrect or incorrect log in method.',
 "The email address is already in use by another account.": "The email address is already registered."
 };
+

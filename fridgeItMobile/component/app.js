@@ -12,6 +12,9 @@ import localStorage from 'react-native-local-storage';
 
 import HomeView from './Home/homeView.js';
 import FixedMenu from './Landing_Page/fixedMenu.js';
+import * as authActions from '../actions/authActions.js';
+
+
 
 class App extends Component {
 	constructor(props) {
@@ -19,7 +22,8 @@ class App extends Component {
 	}
 
 	render = () => {
-		if(localStorage.get('userid')) {
+		console.log(localStorage.get('userid'))
+		if(localStorage.get('userid') !== false) {
       return (
         <View>
         	<Text>found</Text>
@@ -29,11 +33,23 @@ class App extends Component {
     } else {
       return (
         <View>
-          <Text>not found</Text>
+          <FixedMenu history={this.props.history} />
         </View>
       );
     }
 	}
 }
 
-export default App;
+const appState = (store) => {
+  return {
+    username: store.auth.username,
+  }
+};
+
+const appDispatch =(dispatch) => {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  }
+};
+
+export default connect(appState, appDispatch)(App);
