@@ -3,12 +3,12 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  AsyncStorage
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Router, Route, Link, Redirect } from 'react-router-native';
-import localStorage from 'react-native-local-storage';
 
 import HomeView from './Home/homeView.js';
 import FixedMenu from './Landing_Page/fixedMenu.js';
@@ -22,11 +22,10 @@ class App extends Component {
 	}
 
 	render = () => {
-		console.log(localStorage.get('userid'))
-		if(localStorage.get('userid') !== false) {
+		const value = AsyncStorage.getItem('userid');
+		if(value === null) {
       return (
         <View>
-        	<Text>found</Text>
         	<HomeView />
         </View>
       )
