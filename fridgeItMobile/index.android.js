@@ -12,23 +12,29 @@ import {
   View
 } from 'react-native';
 
+
+
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore, compose } from 'redux';
+import createHistory from 'history/createMemoryHistory';
+import { Router } from 'react-router-dom';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+import thunk from 'redux-thunk';
+import { createLogger as logger } from 'redux-logger';
+import promise from 'redux-promise-middleware';
+
+import FridgeApp from './reducers';
+
+const history = createHistory();
+const middleware = applyMiddleware(promise(), thunk, logger(), routerMiddleware(history));
+const store = createStore(FridgeApp, middleware);
+
+
 export default class fridgeItMobile extends Component {
   render() {
-    console.log('hello world');
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-
-          <Text style={styles.hello}> More Text! </Text>
-        </Text>
+        <Text>is it still here</Text>
       </View>
     );
   }
