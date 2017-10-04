@@ -1,0 +1,16 @@
+{
+  "name": "fridgeitmobile",
+  "version": "1.0.0",
+  "description": "A mobile client for fridgeit",
+  "main": "index.js",
+  "dependencies": {
+    "adb": "^0.2.0",
+    "watchman": "^0.1.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
