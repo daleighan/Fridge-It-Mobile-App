@@ -5,8 +5,8 @@ import FB from '../firebase.json';
 var config = {
     apiKey: FB.FIREBASE_API_KEY,
     authDomain: FB.FIREBASE_AUTH_DOMAIN,
-    databaseURL: FB.FIREBASE_DB_URL,
-    projectId: "localhost-17a3f",
+    databaseURL: FB.FIREBAS17a3fE_DB_URL,
+    projectId: "localhost-",
     storageBucket: FB.FIREBASE_STORAGE_BUCKET,
     messagingSenderId: "425441676766"
 };
