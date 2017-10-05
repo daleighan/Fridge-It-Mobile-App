@@ -25,19 +25,13 @@ class App extends Component {
     }
 	}
 
-  // componentDidMount() {
-  //   AsyncStorage.getItem('userid').then((userId) => {
-  //     this.setState({ userId, }, () => {
-  //       console.log('state', this.state);
-  //     });
-  //   }).catch((err) => console.log(err));
-  // }
-
   render() {
     let page = <HomeView history={this.props.history} />
     AsyncStorage.getItem('userid').then((userId) => {
       if (userId !== null) {
-        this.setState({ loggedIn: true })
+        this.setState({ loggedIn: true });
+      } else {
+        this.setState({ loggedIn: false });
       }
     }).catch((err) => console.log(err));
     if (this.state.loggedIn === true) {
