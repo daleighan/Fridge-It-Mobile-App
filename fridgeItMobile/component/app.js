@@ -22,19 +22,24 @@ class App extends Component {
 	}
 
 	render = () => {
-		// when complete change this back
-		if(AsyncStorage.getItem('userid') === null) {
-      return (
-        <View>
-        	<HomeView history={this.props.history} />
-        </View>
-      )
-    } else {
-      return (
-        <View>
-          <FixedMenu history={this.props.history} />
-        </View>
-      );
+    try {
+      const value = AsyncStorage.getItem('userid');
+      console.log(value);
+      if (value !== null) {
+        return (
+          <View>
+            <HomeView history={this.props.history} />
+          </View>
+        )
+      } else {
+        return (
+          <View>
+            <FixedMenu history={this.props.history} />
+          </View>
+        )
+      }
+    } catch (error) {
+      console.log(error);
     }
 	}
 }
