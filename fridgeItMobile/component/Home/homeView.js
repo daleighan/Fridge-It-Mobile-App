@@ -4,7 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  Image,
+  AsyncStorage
 } from 'react-native';
 
 import { 
@@ -12,17 +14,22 @@ import {
 	Router, 
 	Route, 
 	Link, 
-	nativeHistory 
+	nativeHistory, 
 } from 'react-router-native';
 import { connect } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import * as authActions from '../../actions/authActions.js';
 
+import Home from '../Home/home.js';
+
 
 class HomeView extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			name: ''	
+		}
 	}
 
 
@@ -32,11 +39,26 @@ class HomeView extends Component {
     this.props.actions.logoutUser(that);
 	}
 
+	componentWillMount = () => {
+		AsyncStorage.getItem('name').then((name) => {
+			this.setState({ name, });
+		});
+	}
+
 	render = () => {
 		return (
 			<View>				
 				<NativeRouter history={nativeHistory}>
-					<Button onPress={this.logout} title="Logout" />
+					<View>
+						<View>
+							<Link to="/home">
+								<Text>Go Home</Text>
+							</Link>
+							<Text>{this.state.name}</Text>
+							<Button onPress={this.logout} title="Logout" />
+						</View>
+						<Route path="/home" component={Home} />
+					</View>
 				</NativeRouter>
 			</View>
 		)
