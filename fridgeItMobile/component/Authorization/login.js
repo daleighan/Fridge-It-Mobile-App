@@ -31,7 +31,6 @@ class Login extends Component {
   }
 
 	render(props) {
-		console.log(this.props);
 		return (
 			<View>
 				<Text>Login</Text>

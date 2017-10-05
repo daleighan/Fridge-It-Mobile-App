@@ -57,7 +57,6 @@ export const logoutUser = () => {
               AsyncStorage.removeItem('visitorId').then(() => {
                 dispatch({type: 'USER_LOGOUT_FULFILLED'});
                 dispatch(push('/'));
-                location.reload();
               });
             });
           });
