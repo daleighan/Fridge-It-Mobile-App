@@ -23,11 +23,12 @@ class Login extends Component {
 		}
 	}
 
-	emailSignin = ({history}) => {
+	emailSignin = () => {
+		let that = this;
     let user = this.state.usernameText;
     let pw = this.state.passwordText;
-    this.props.actions.emailLogin(user, pw);
-    this.props.history.push('/');
+    this.props.actions.emailLogin(user, pw, that);
+    // this.props.history.push('/');
   }
 
 	render(props) {

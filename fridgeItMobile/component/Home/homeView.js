@@ -27,9 +27,9 @@ class HomeView extends Component {
 
 
 	logout = (e) => {
+		let that = this
 		e.preventDefault();
-    this.props.actions.logoutUser();
-    this.props.history.push('/');
+    this.props.actions.logoutUser(that);
 	}
 
 	render = () => {

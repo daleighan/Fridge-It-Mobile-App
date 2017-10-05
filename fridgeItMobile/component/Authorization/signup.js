@@ -19,10 +19,10 @@ class Signup extends Component {
 	}
 
 	emailSignUp() {
+		let that = this
     let user = this.state.usernameText;
     let pw = this.state.passwordText;
-    this.props.actions.emailSignUp(user, pw);
-    this.props.history.push('/');
+    this.props.actions.emailSignUp(user, pw, that);
   };
 
 	render() {

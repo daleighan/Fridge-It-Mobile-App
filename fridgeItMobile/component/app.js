@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
   AsyncStorage
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -19,27 +20,38 @@ import * as authActions from '../actions/authActions.js';
 class App extends Component {
 	constructor(props) {
 		super(props);
+    this.state = {
+      loggedIn: false
+    }
 	}
 
-	render = () => {
-    try {
-      const value = AsyncStorage.getItem('userid');
-      console.log(value);
-      if (value !== null) {
-        return (
-          <View>
-            <HomeView history={this.props.history} />
-          </View>
-        )
-      } else {
-        return (
-          <View>
-            <FixedMenu history={this.props.history} />
-          </View>
-        )
+  // componentDidMount() {
+  //   AsyncStorage.getItem('userid').then((userId) => {
+  //     this.setState({ userId, }, () => {
+  //       console.log('state', this.state);
+  //     });
+  //   }).catch((err) => console.log(err));
+  // }
+
+  render() {
+    let page = <HomeView history={this.props.history} />
+    AsyncStorage.getItem('userid').then((userId) => {
+      if (userId !== null) {
+        this.setState({ loggedIn: true })
       }
-    } catch (error) {
-      console.log(error);
+    }).catch((err) => console.log(err));
+    if (this.state.loggedIn === true) {
+      return (
+        <View>
+          <HomeView history={this.props.history} />
+        </View>
+      )
+    } else {
+      return (
+        <View>
+          <FixedMenu history={this.props.history} />
+        </View>
+      )
     }
 	}
 }

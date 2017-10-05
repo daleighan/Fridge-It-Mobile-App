@@ -27,7 +27,7 @@ import { push } from 'react-router-redux';
 // };
 
 // Email log in function. Stores relevant info onto the localStorage object.
-export const emailLogin = (email, pw) => {
+export const emailLogin = (email, pw, context) => {
   return function(dispatch) {
     firebase.auth().signInWithEmailAndPassword(email, pw)
       .then(result => {
@@ -36,6 +36,7 @@ export const emailLogin = (email, pw) => {
             dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
             dispatch(push('/'));
             alert('you are now logged in!');
+            context.props.history.push('/');
           });
         });// Calls on authReducers.js to create the new state.
       })
@@ -47,7 +48,7 @@ export const emailLogin = (email, pw) => {
 };
 
 // Firebase log out function.  Removes all stored info from localStorage object.
-export const logoutUser = () => {
+export const logoutUser = (context) => {
   return function(dispatch) {
     auth.signOut()
       .then(() => {
@@ -57,6 +58,7 @@ export const logoutUser = () => {
               AsyncStorage.removeItem('visitorId').then(() => {
                 dispatch({type: 'USER_LOGOUT_FULFILLED'});
                 dispatch(push('/'));
+                context.props.history.push('/');
               });
             });
           });
@@ -71,7 +73,7 @@ export const logoutUser = () => {
 };
 
 // Email sign up function. Stores relevant info onto the localStorage object.
-export const emailSignUp = (email, pw) => {
+export const emailSignUp = (email, pw, context) => {
   return function(dispatch) {    
     firebase.auth().createUserWithEmailAndPassword(email, pw)
       .then(result => {
@@ -80,6 +82,7 @@ export const emailSignUp = (email, pw) => {
             dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
             dispatch(push('/'));
             alert('new account created');
+            context.props.history.push('/');
           });
         });
         // Calls on authReducers.js to create the new state.
