@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export function getItems(fridgeId) {
   return function(dispatch) {
-    axios.get('/api/items/' + fridgeId)
+    axios.get('https://immense-gorge-29906.herokuapp.com/home/api/items/' + fridgeId)
       .then(({ data }) => {
         dispatch({type: 'FETCH_ITEMS_FULFILLED', payload: data});
       })
@@ -17,7 +17,7 @@ export function getItems(fridgeId) {
 
 export function addItem(item, id) {
   return function(dispatch) {
-    axios.post('/api/items', {
+    axios.post('https://immense-gorge-29906.herokuapp.com/home/api/items', {
       name: item.name,
       quantity: item.quantity,
       type: item.type,
@@ -36,7 +36,7 @@ export function addItem(item, id) {
 
 export function updateItem(item, id) {
   return function(dispatch) {
-    axios.patch('api/items/' + id, {
+    axios.patch('https://immense-gorge-29906.herokuapp.com/home/api/items/' + id, {
       name: item.name,
       quantity: item.quantity, 
       type: item.type,
@@ -54,7 +54,7 @@ export function updateItem(item, id) {
 
 export function deleteItem(id) {
   return function(dispatch) {
-    axios.delete('api/items/' + id)
+    axios.delete('https://immense-gorge-29906.herokuapp.com/home/api/items/' + id)
       .then((response) => {
         dispatch({type: 'DELETE_ITEM_FULFILLED', payload: response.data});
         dispatch({type: 'NEW_ITEM_POSTED'});

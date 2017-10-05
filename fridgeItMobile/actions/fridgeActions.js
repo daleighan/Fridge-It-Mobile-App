@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export function getFridge(name) {
   return function(dispatch) {
-    axios.get('/api/fridge/' + name)
+    axios.get('https://immense-gorge-29906.herokuapp.com/home/api/fridge/' + name)
       .then((data) => {
         localStorage.setItem('fId', data.data[0].id);
         dispatch({type: 'FETCH_FRIDGE_FULFILLED', payload: data.data[0]});
@@ -18,7 +18,7 @@ export function getFridge(name) {
 
 export function addFridge(fridge) {
   return function(dispatch) {
-    axios.post('/api/fridge', {
+    axios.post('https://immense-gorge-29906.herokuapp.com/home/api/fridge', {
       users: fridge.users,
       name: fridge.name
     })

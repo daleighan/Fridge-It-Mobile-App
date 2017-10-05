@@ -3,7 +3,7 @@ import axios from 'axios';
 // Sends request to SERVER which calls External API
 export function fetchRecipes(ingredients) {
   return function(dispatch) {
-    axios.put('/api/search', {
+    axios.put('https://immense-gorge-29906.herokuapp.com/home/api/search', {
       data: {
         ingredients: ingredients,
       }

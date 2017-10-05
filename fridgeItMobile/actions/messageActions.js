@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const fetchMessages = (fridgeId) => {
   return function(dispatch) {
-    axios.get('/api/allMessages/' + fridgeId)
+    axios.get('https://immense-gorge-29906.herokuapp.com/home/api/allMessages/' + fridgeId)
       .then((response) => {
         dispatch({type: 'FETCH_MESSAGES_FULFILLED', payload: response.data});
       })
@@ -16,7 +16,7 @@ export const fetchMessages = (fridgeId) => {
  
 export const postMessages = (fridgeId, username, messages) => {
   return function(dispatch) {
-    axios.post('/api/allMessages', {
+    axios.post('https://immense-gorge-29906.herokuapp.com/home/api/allMessages', {
       data: {
         messages: messages,
         like: [' '],
@@ -35,7 +35,7 @@ export const postMessages = (fridgeId, username, messages) => {
 
 export const deleteMessages = (messageId) => {
   return function(dispatch) {
-    axios.delete('/api/allMessages/' + messageId)
+    axios.delete('https://immense-gorge-29906.herokuapp.com/home/api/allMessages/' + messageId)
       .then((response) => {
         dispatch({type: 'DELETE_MESSAGES_FULFILLED', payload: response.data});
       })
@@ -47,7 +47,7 @@ export const deleteMessages = (messageId) => {
 
 export const updateMessages = (msg) => {
   return function(dispatch) {
-    axios.patch('/api/allMessages/' + msg.id, {
+    axios.patch('https://immense-gorge-29906.herokuapp.com/home/api/allMessages/' + msg.id, {
       like: msg.like,
       fridgeId: msg.fridgeId,
       user: msg.user,
