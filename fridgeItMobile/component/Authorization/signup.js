@@ -22,6 +22,7 @@ class Signup extends Component {
     let user = this.state.usernameText;
     let pw = this.state.passwordText;
     this.props.actions.emailSignUp(user, pw);
+    this.props.history.push('/');
   };
 
 	render() {

@@ -27,9 +27,11 @@ class Login extends Component {
     let user = this.state.usernameText;
     let pw = this.state.passwordText;
     this.props.actions.emailLogin(user, pw);
+    this.props.history.push('/');
   }
 
 	render(props) {
+		console.log(this.props);
 		return (
 			<View>
 				<Text>Login</Text>
