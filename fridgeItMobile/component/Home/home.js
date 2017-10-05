@@ -19,12 +19,26 @@ import * as fridgeActions from '../../actions/fridgeActions.js';
 class Home extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			currentUser: ''
+		}
 	}
 
 	componentWillMount() {
 		AsyncStorage.getItem('name').then((name) => {
 			this.props.actions.getFridge(name);
+			this.setState({'currentUser': name});
 		}).catch((err) => console.log(err));
+	}
+
+	createFridge = (e) => {
+		e.preventDefault();
+		const fridgeObj = {
+      users: [this.state.currentUser],
+      name: this.state.currentUser,
+      phone: '',
+    }
+    this.props.actions.addFridge(fridgeObj);
 	}
 
 	render = () => {
@@ -32,7 +46,11 @@ class Home extends Component {
 		if (fetched || posted) {
 			return (<Text>Fetched or Posted </Text>)
 		} else {
-			return (<Text>Not Fetched or Posted</Text>)
+			return (
+				<View>
+					<Button title="Create a Fridge" onPress={this.createFridge} />
+				</View>
+			)
 		}
 	}
 }
