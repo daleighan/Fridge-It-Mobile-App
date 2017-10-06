@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -31,7 +30,6 @@ class ItemAddition extends Component {
 	handleSubmit = () => {
 		const { itemActions, fridge } = this.props;
 		AsyncStorage.getItem('name').then((user) => {
-			console.log(this.state.foodType);
 			let item = {
 				name: this.state.itemName,
 				quantity: this.state.itemQTY,

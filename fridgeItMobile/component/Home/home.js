@@ -26,7 +26,6 @@ class Home extends Component {
 	componentDidMount() {
 		const that = this;
 		AsyncStorage.getItem('name').then((name) => {
-			console.log('name',name);
 			this.props.actions.getFridge(name);
 			this.setState({'currentUser': name});
 		})
