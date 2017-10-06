@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Button,
-  AsyncStorage
+  AsyncStorage,
+  Image
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -25,7 +26,7 @@ class App extends Component {
     }
 	}
 
-  render() {
+  render = () => {
     let page = <HomeView history={this.props.history} />
     AsyncStorage.getItem('userid').then((userId) => {
       if (userId !== null) {
@@ -43,7 +44,12 @@ class App extends Component {
     } else {
       return (
         <View>
-          <FixedMenu history={this.props.history} />
+          <Image 
+            style={{width: 360, height: 480, backgroundColor: '#3B86D2', flex:1 }}
+            source={{uri: 'https://greatist.com/sites/default/files/fridge-of-food.jpg'}}
+          >
+            <FixedMenu history={this.props.history} />
+          </Image>
         </View>
       )
     }

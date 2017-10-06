@@ -30,7 +30,7 @@ class Login extends Component {
 
 	render(props) {
 		return (
-			<View>
+			<View style={{flexDirection: 'column', justifyContent: 'center'}}>
 				<Text>Login</Text>
 				<Text>E-mail</Text>
 					<TextInput onChangeText={(text) => this.setState({ usernameText: text })} />
