@@ -14,6 +14,7 @@ import { bindActionCreators } from 'redux';
 import Messages from '../Message/messagesListView.js';
 import Fridge from '../Fridge/fridgeView.js';
 import * as fridgeActions from '../../actions/fridgeActions.js';
+import * as itemActions from '../../actions/itemActions.js';
 
 class Home extends Component {
 	constructor(props) {
@@ -27,7 +28,11 @@ class Home extends Component {
 		AsyncStorage.getItem('name').then((name) => {
 			this.props.actions.getFridge(name);
 			this.setState({'currentUser': name});
-		}).catch((err) => console.log(err));
+		}).then(() => {
+			AsyncStorage.getItem('fid').then((fId) => {
+        this.props.itemActions.getItems(fId);
+      })
+    }).catch((err) => console.log(err));
 	}
 
 	createFridge = (e) => {
@@ -68,6 +73,7 @@ const homeState = (store) => {
 const homeDispatch = (dispatch) => {
   return {
     actions: bindActionCreators(fridgeActions, dispatch),
+    itemActions: bindActionCreators(itemActions, dispatch)
   }
 };
 

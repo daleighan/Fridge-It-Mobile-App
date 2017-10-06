@@ -28,15 +28,14 @@ class Fridge extends Component {
 
 
   componentDidMount() {
-    let that = this;
     AsyncStorage.getItem('name').then((name) => {
-      that.props.fridgeActions.getFridge(name);
+      this.props.actions.getFridge(name);
+      this.setState({'currentUser': name});
     }).then(() => {
       AsyncStorage.getItem('fid').then((fId) => {
-        console.log(fId);
-        that.props.itemActions.getItems(fId);
-      }).catch((err) => console.log(err));
-    });
+        this.props.itemActions.getItems(fId);
+      })
+    }).catch((err) => console.log(err));
   };
 
 
