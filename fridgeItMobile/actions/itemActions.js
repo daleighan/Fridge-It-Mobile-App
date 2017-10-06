@@ -4,7 +4,6 @@ import axios from 'axios';
 //uses reducers as part of promises to change state
 
 export function getItems(fridgeId) {
-  console.log(fridgeId);
   return function(dispatch) {
     axios.get('https://immense-gorge-29906.herokuapp.com/api/items/' + fridgeId)
       .then(({ data }) => {

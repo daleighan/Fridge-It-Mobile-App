@@ -55,9 +55,6 @@ class HomeView extends Component {
 							<Link to="/home">
 								<Text style={styles.btn}>Go Home</Text>
 							</Link>
-							<Link to="/fridge">
-								<Text style={styles.btn}>Fridges</Text>
-							</Link>
 							<Link to="/messages">
 								<Text style={styles.btn}>Messages</Text>
 							</Link>
@@ -65,7 +62,6 @@ class HomeView extends Component {
 							<Button onPress={this.logout} title="Logout" />
 						</View>
 						<Route path="/home" component={Home} />
-						<Route path="/fridge" component={Fridge} />
 						<Route path="/messages" component={Messages} />
 					</View>
 				</NativeRouter>

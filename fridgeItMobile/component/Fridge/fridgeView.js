@@ -6,7 +6,8 @@ import {
   View,
   Button,
   Image,
-  AsyncStorage
+  AsyncStorage,
+  TextInput
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -20,6 +21,9 @@ import * as itemActions from '../../actions/itemActions.js';
 class Fridge extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      otherUsernameText: ''
+    }
   }
 
 
@@ -35,13 +39,6 @@ class Fridge extends Component {
     });
   };
 
-  // componentDidMount() {
-  //   this.props.fridgeActions.getFridge(localStorage.getItem('visitorId') || localStorage.getItem('name'));
-  //   let state = this;
-  //   setTimeout(() => {
-  //     state.props.itemActions.getItems(localStorage.getItem('fId'));
-  //   }, 500);
-  // };
 
   filterItems = (type) => {
     return this.props.items.filter((item) => {
@@ -51,9 +48,20 @@ class Fridge extends Component {
     })
   };
 
+  handleSwitch = () => {
+    this.props.fridgeActions.getFridge(this.state.otherUsernameText)
+  }
+
   render = () => {
+    let { fridge, fridgeActions, itemActions } = this.props;
     return (
-      <Text>Fridge</Text>
+      <View>
+        <View>
+          <Text>Find Another User's Fridge</Text>
+          <TextInput onChangeText={(text) => this.setState({ otherUsernameText: text })} />
+          <Button title="Submit" onPress={this.handleSwitch} />
+        </View>
+      </View>
     )
   }
 }
