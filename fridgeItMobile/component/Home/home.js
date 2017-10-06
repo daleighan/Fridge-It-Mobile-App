@@ -57,8 +57,8 @@ class Home extends Component {
 		} else {
 			return (
 				<View>
-					<Button title="Create a Fridge" onPress={this.createFridge} />
-					<Text>If you have not already created your own fridge, please click on "MY FRIDGE" and then create a new one and start adding items!</Text>
+					<Text style={styles.btn} onPress={this.createFridge}>Create a Fridge</Text>
+					<Text style={styles.prompt}>If you have not already created your own fridge, please click on "MY FRIDGE" and then create a new one and start adding items!</Text>
 				</View>
 			)
 		}
@@ -80,3 +80,28 @@ const homeDispatch = (dispatch) => {
 };
 
 export default connect(homeState, homeDispatch)(Home);
+
+const styles = StyleSheet.create({
+	prompt: {
+		marginTop: 60,
+		marginLeft:15,
+		marginRight: 15,
+		fontSize: 20,
+		textAlign: 'center'
+	},
+	btn: {
+		// marginLeft: 7,
+		// marginRight: 7,
+		// marginTop:7,
+		margin: 7,
+  	height: 50,
+    textAlign: 'center',
+		fontSize: 14,
+		borderWidth: 1,
+		borderRadius: 2,
+		padding: 13,
+		backgroundColor: '#3B86D2',
+		fontWeight: 'bold',
+		color: 'white'
+  }
+});
