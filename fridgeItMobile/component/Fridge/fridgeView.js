@@ -46,7 +46,7 @@ class Fridge extends Component {
       AsyncStorage.getItem('fid').then((fId) => {
         that.props.itemActions.getItems(fId);
       })
-    }, 200);
+    }, 700);
   }
 
   handleSwitch = () => {
@@ -56,7 +56,7 @@ class Fridge extends Component {
       AsyncStorage.getItem('fid').then((fId) => {
         that.props.itemActions.getItems(fId);
       })
-    }, 200);
+    }, 700);
   }
 
   render = () => {
@@ -65,15 +65,16 @@ class Fridge extends Component {
     return (
       <View>
         <View>
-          <Link to="/addition">
-            <Text style={styles.btn}>Add an Item</Text>
-          </Link>
           <Text>Find Another User's Fridge</Text>
           <TextInput onChangeText={(text) => this.setState({ otherUsernameText: text })} />
           <Button title="Submit" onPress={this.handleSwitch} />
           <Button title="Back To Your Fridge" onPress={this.getYourFridge} />
+          <Link to="/addition">
+            <Text style={styles.btn}>Add an Item</Text>
+          </Link>
         </View>
         <View>
+          <Text>{fridge.name}'s Fridge</Text>
           <View>
             <Image
               style={{width: 55, height: 55}}

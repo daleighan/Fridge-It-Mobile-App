@@ -24,7 +24,6 @@ const ItemList = (props) => {
 						<Text>Quantity: {item.quantity}</Text>
 						<Text>Expiration Date: {item.expiry || 'none'}</Text>
 						<Button title="+" onPress={(e) => {
-							
 							props.actions.updateItem({
 								name: item.name,
 								quantity: item.quantity + 1,
@@ -36,8 +35,6 @@ const ItemList = (props) => {
 								name: item.name,
 								quantity: item.quantity - 1,
 								type: item.type,
-								fridgeId: props.fridge.id,
-								user: props.fridge.name
 							}, item.id);
 						}} />
 						<Button title="X" onPress={(e) => {

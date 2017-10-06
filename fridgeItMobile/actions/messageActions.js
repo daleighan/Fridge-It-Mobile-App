@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const fetchMessages = (fridgeId) => {
   return function(dispatch) {
-    axios.get('https://immense-gorge-29906.herokuapp.com/home/api/allMessages/' + fridgeId)
+    axios.get('https://immense-gorge-29906.herokuapp.com/api/allMessages/' + fridgeId)
       .then((response) => {
         dispatch({type: 'FETCH_MESSAGES_FULFILLED', payload: response.data});
       })
@@ -16,7 +16,7 @@ export const fetchMessages = (fridgeId) => {
  
 export const postMessages = (fridgeId, username, messages) => {
   return function(dispatch) {
-    axios.post('https://immense-gorge-29906.herokuapp.com/home/api/allMessages', {
+    axios.post('https://immense-gorge-29906.herokuapp.com/api/allMessages', {
       data: {
         messages: messages,
         like: [' '],
@@ -24,40 +24,40 @@ export const postMessages = (fridgeId, username, messages) => {
         user: username,
       }
     })
-      .then((response) => {
-        dispatch({type: 'POST_MESSAGES_FULFILLED', payload: response.data});
-      })
-      .catch((err) => {
-        dispatch({type: 'POST_MESSAGES_REJECTED', payload: err});
-      });
+    .then((response) => {
+      dispatch({type: 'POST_MESSAGES_FULFILLED', payload: response.data});
+    })
+    .catch((err) => {
+      dispatch({type: 'POST_MESSAGES_REJECTED', payload: err});
+    });
   };
 };
 
 export const deleteMessages = (messageId) => {
   return function(dispatch) {
-    axios.delete('https://immense-gorge-29906.herokuapp.com/home/api/allMessages/' + messageId)
-      .then((response) => {
-        dispatch({type: 'DELETE_MESSAGES_FULFILLED', payload: response.data});
-      })
-      .catch((err) => {
-        dispatch({type: 'DELETE_MESSAGES_REJECTED', payload: err});
-      });
+    axios.delete('https://immense-gorge-29906.herokuapp.com/api/allMessages/' + messageId)
+    .then((response) => {
+      dispatch({type: 'DELETE_MESSAGES_FULFILLED', payload: response.data});
+    })
+    .catch((err) => {
+      dispatch({type: 'DELETE_MESSAGES_REJECTED', payload: err});
+    });
   };
 };
 
 export const updateMessages = (msg) => {
   return function(dispatch) {
-    axios.patch('https://immense-gorge-29906.herokuapp.com/home/api/allMessages/' + msg.id, {
+    axios.patch('https://immense-gorge-29906.herokuapp.com/api/allMessages/' + msg.id, {
       like: msg.like,
       fridgeId: msg.fridgeId,
       user: msg.user,
       messageText: msg.messageText
     })
-      .then((response) => {
-        dispatch({type: 'UPDATE_MESSAGES_FULFILLED', payload: response.data[1]});
-      })
-      .catch((err) => {
-        dispatch({type: 'UPDATE_MESSAGES_REJECTED', payload: err});
-      });
+    .then((response) => {
+      dispatch({type: 'UPDATE_MESSAGES_FULFILLED', payload: response.data[1]});
+    })
+    .catch((err) => {
+      dispatch({type: 'UPDATE_MESSAGES_REJECTED', payload: err});
+    });
   };
 };

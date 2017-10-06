@@ -57,18 +57,18 @@ class HomeView extends Component {
 				<NativeRouter history={nativeHistory}>
 					<View>
 						<View>
-							<Link to="/home">
-								<Text style={styles.btn}>My Fridge</Text>
+							<Link to='/home'>
+								<Text style={styles.btn}>Current Fridge</Text>
 							</Link>
-							<Link to="/messages">
+							<Link to='/messages'>
 								<Text style={styles.btn}>Current Fridge Messages</Text>
 							</Link>
 							<Text style={styles.btn}>{this.state.name}</Text>
 							<Button onPress={this.logout} title="Logout" />
 						</View>
-						<Route path="/home" component={Home}/>
-						<Route path="/messages" component={Messages} />
-						<Route path="/addition" component={ItemAddition} />
+						<Route path='/home' component={Home}/>
+						<Route path='/messages' component={Messages} />
+						<Route path='/addition' component={ItemAddition} />
 					</View>
 				</NativeRouter>
 			</ScrollView>

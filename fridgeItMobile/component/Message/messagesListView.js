@@ -6,7 +6,8 @@ import {
   View,
   Button,
   Image,
-  AsyncStorage
+  AsyncStorage,
+  TextInput
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -17,11 +18,24 @@ import * as messageActions from '../../actions/messageActions.js';
 class MessageListView extends Component {
 	constructor(props) {
 		super(props);
+    this.state = {
+      text: ''
+    }
 	}
+
+  handleSubmit = () => {
+    console.log(this.props)
+    const { fridge, username, actions } = this.props;
+    actions.postMessages(fridge.id, username, this.state.text);
+  }
 
 	render = () => {
 		return (
-			<Text>Messages</Text>
+			<View>
+        <Text>Post A Message!</Text>
+        <TextInput onChangeText={(text) => this.setState({ text, })} />
+        <Button title='Post Message' onPress={this.handleSubmit} />
+      </View>
 		)
 	}
 }
