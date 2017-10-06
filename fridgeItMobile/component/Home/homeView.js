@@ -53,15 +53,15 @@ class HomeView extends Component {
 					<View>
 						<View>
 							<Link to="/home">
-								<Text>Go Home</Text>
+								<Text style={styles.btn}>Go Home</Text>
 							</Link>
 							<Link to="/fridge">
-								<Text>Fridges</Text>
+								<Text style={styles.btn}>Fridges</Text>
 							</Link>
 							<Link to="/messages">
-								<Text>Messages</Text>
+								<Text style={styles.btn}>Messages</Text>
 							</Link>
-							<Text>{this.state.name}</Text>
+							<Text style={styles.btn}>{this.state.name}</Text>
 							<Button onPress={this.logout} title="Logout" />
 						</View>
 						<Route path="/home" component={Home} />
@@ -73,6 +73,12 @@ class HomeView extends Component {
 		)
 	}
 } 
+
+const styles = StyleSheet.create({
+  btn: {
+    fontSize: 30
+  }
+});
 
 
 const homeState = (store) => {

@@ -56,6 +56,9 @@ const styles = StyleSheet.create({
   },
   hello: {
     fontSize: 30
+  },
+  btn: {
+    fontSize: 30
   }
 });
 
