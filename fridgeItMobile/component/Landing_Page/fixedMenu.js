@@ -66,20 +66,31 @@ const styles = StyleSheet.create({
     fontSize: 36, 
     backgroundColor: '#3B86D2', 
     color: 'white',
+    paddingLeft: 15,
+    paddingTop: 8,
+    marginLeft: 5,
+    borderLeftWidth: 0.75,
+    borderColor: 'grey'
   },
   loginText: {
+    paddingLeft: 4,
+    marginTop:20,
     fontSize: 18, 
     color: 'white',
   },
   login: {
     width: 55, 
     height: 70, 
-    backgroundColor: '#3B86D2'
+    backgroundColor: '#3B86D2',
+    borderLeftWidth: 0.75,
+    borderColor: 'grey'
   },
   logout: {
     width: 65, 
     height: 70, 
-    backgroundColor: '#3B86D2'
+    backgroundColor: '#3B86D2',
+    borderLeftWidth: 0.75,
+    borderColor: 'grey'
   },
   splashText1: {
     color: 'white', 
