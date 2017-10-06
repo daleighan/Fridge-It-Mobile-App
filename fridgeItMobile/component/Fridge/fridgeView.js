@@ -31,7 +31,6 @@ class Fridge extends Component {
   filterItems = (type) => {
     return this.props.items.filter((item) => {
       if (item.type === type) {
-        console.log(item)
         return item; 
       }
     })
