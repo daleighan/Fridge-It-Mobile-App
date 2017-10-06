@@ -14,7 +14,6 @@ export function getFridge(name) {
         dispatch({type: 'FETCH_FRIDGE_FULFILLED', payload: data.data[0]});
       })
       .catch(err => {
-        alert('Fridge Not Found!')
         dispatch({type: 'FETCH_FRIDGE_REJECTED', payload: err});
       });
   };

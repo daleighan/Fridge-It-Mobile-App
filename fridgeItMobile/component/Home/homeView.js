@@ -5,7 +5,8 @@ import {
   View,
   Button,
   AsyncStorage,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native';
 
 import { 
@@ -52,15 +53,21 @@ class HomeView extends Component {
 			<ScrollView>				
 				<NativeRouter history={nativeHistory}>
 					<View>
-						<View>
+						<View style={styles.container1}>
+		          <Image
+		            style={styles.logo}
+		            source={{uri: 'https://cdn0.iconfinder.com/data/icons/household-appliances-icons-set-cartoon-style/512/a672-512.png'}}
+		          />
+		          <Text style={styles.logoText}>Fridge-It</Text>
+						</View>
+						<View style={styles.container2}>
 							<Link to='/home'>
-								<Text style={styles.btn}>My Fridge</Text>
+								<Text style={styles.btn}>MY FRIDGE</Text>
 							</Link>
 							<Link to='/messages'>
-								<Text style={styles.btn}>Current Fridge Messages</Text>
+								<Text style={styles.btn}>MESSAGES</Text>
 							</Link>
-							<Text style={styles.btn}>{this.state.name}</Text>
-							<Button onPress={this.logout} title="Logout" />
+							<Text style={styles.btn} onPress={this.logout}>LOGOUT</Text>
 						</View>
 						<Route path='/home' component={Home}/>
 						<Route path='/messages' component={Messages} />
@@ -73,8 +80,46 @@ class HomeView extends Component {
 } 
 
 const styles = StyleSheet.create({
+	container1: {
+  	width: 360,
+  	height: 80,
+    flexDirection: 'row', 
+    backgroundColor: '#3B86D2'
+  },
+  container2: {
+  	width: 360,
+    flexDirection: 'row', 
+    justifyContent: 'center',
+    backgroundColor: '#3B86D2'
+  },
+  logo: {
+    width: 70, 
+    height: 70, 
+    backgroundColor: '#3B86D2'
+  },
+  logoText: {
+    width: 160, 
+    height: 70, 
+    fontSize: 36, 
+    backgroundColor: '#3B86D2', 
+    color: 'white',
+    paddingLeft: 15,
+    paddingTop: 8,
+    marginLeft: 5,
+    borderLeftWidth: 0.75,
+    borderColor: 'grey'
+  },
   btn: {
-    fontSize: 20
+  	width: 120,
+  	height: 50,
+    textAlign: 'center',
+		fontSize: 14,
+		borderWidth: 1,
+		borderRadius: 2,
+		padding: 13,
+		backgroundColor: '#3B86D2',
+		fontWeight: 'bold',
+		color: 'white'
   }
 });
 

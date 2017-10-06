@@ -22,7 +22,6 @@ const FixedMenu = () => {
     <NativeRouter history={nativeHistory}>	
       <View>
         <View style={styles.container}>
-        
           <Image
             style={styles.logo}
             source={{uri: 'https://cdn0.iconfinder.com/data/icons/household-appliances-icons-set-cartoon-style/512/a672-512.png'}}
