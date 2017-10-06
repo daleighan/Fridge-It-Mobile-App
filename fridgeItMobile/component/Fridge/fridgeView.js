@@ -64,13 +64,15 @@ class Fridge extends Component {
     return (
       <View>
         <View>
-          <Text>Find Another User's Fridge</Text>
+          <Text>Find Another User's Fridge by E-mail</Text>
           <TextInput onChangeText={(text) => this.setState({ otherUsernameText: text })} />
-          <Button title="Submit" onPress={this.handleSwitch} />
-          <Button title="Back To Your Fridge" onPress={this.getYourFridge} />
-          <Link to="/addition">
-            <Text style={styles.btn}>Add an Item</Text>
-          </Link>
+          <Text style={styles.btn} onPress={this.handleSwitch}>Submit</Text>
+          <View style={styles.twoWide}>
+            <Text style={styles.btn} onPress={this.getYourFridge}>Back To Your Fridge</Text>
+            <Link to="/addition">
+              <Text style={styles.btn}>Add an Item</Text>
+            </Link>
+          </View>
         </View>
         <View>
           <Text>{fridge.name}'s Fridge</Text>
@@ -134,13 +136,6 @@ class Fridge extends Component {
   }
 }
 
-
-const styles = StyleSheet.create({
-  btn: {
-    fontSize: 20
-  }
-});
-
 const fridgeState = (store) => {
   return {
     username: store.auth.username,
@@ -159,6 +154,27 @@ const fridgeDispatch = (dispatch) => {
 };
 
 export default connect(fridgeState, fridgeDispatch)(Fridge); 
+
+const styles = StyleSheet.create({
+  btn: {
+    fontSize: 20,
+    height: 50,
+    textAlign: 'center',
+    fontSize: 14,
+    borderWidth: 1,
+    borderRadius: 2,
+    padding: 13,
+    margin: 3,
+    backgroundColor: '#3B86D2',
+    fontWeight: 'bold',
+    color: 'white'
+  },
+  twoWide: {
+    width: 360,
+    flexDirection: 'row', 
+    justifyContent: 'center',
+  }
+});
 
 const types = [
 {

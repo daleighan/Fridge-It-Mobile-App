@@ -90,9 +90,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 	btn: {
-		// marginLeft: 7,
-		// marginRight: 7,
-		// marginTop:7,
 		margin: 7,
   	height: 50,
     textAlign: 'center',
