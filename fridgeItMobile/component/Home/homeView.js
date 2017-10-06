@@ -54,7 +54,7 @@ class HomeView extends Component {
 					<View>
 						<View>
 							<Link to='/home'>
-								<Text style={styles.btn}>Current Fridge</Text>
+								<Text style={styles.btn}>My Fridge</Text>
 							</Link>
 							<Link to='/messages'>
 								<Text style={styles.btn}>Current Fridge Messages</Text>
