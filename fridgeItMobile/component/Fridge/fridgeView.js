@@ -60,6 +60,15 @@ class Fridge extends Component {
           <TextInput onChangeText={(text) => this.setState({ otherUsernameText: text })} />
           <Button title="Submit" onPress={this.handleSwitch} />
         </View>
+
+        <View>
+          {types.map((type) => {
+            let filteredItems = this.filterItems(type.name);
+            return (
+              <Text>{type.name}</Text>
+            )
+          })}
+        </View>
       </View>
     )
   }
@@ -84,3 +93,36 @@ const fridgeDispatch = (dispatch) => {
 };
 
 export default connect(fridgeState, fridgeDispatch)(Fridge); 
+
+const types = [
+{
+  name: 'produce', 
+  position: 'top center',
+  display: 'Produce'
+}, 
+{
+  name: 'dairy', 
+  position: 'top left',
+  display: 'Dairy'
+},
+{
+  name: 'protein',
+  position: 'left center',
+  display: 'Protein'
+},
+{
+  name: 'grains',
+  position: 'top right',
+  display: 'Grains'
+}, 
+{
+  name: 'frozen',
+  position: 'right center',
+  display: 'Frozen'
+}, 
+{
+  name: 'misc',
+  position: 'top left',
+  display: 'Misc'
+}
+]; 
