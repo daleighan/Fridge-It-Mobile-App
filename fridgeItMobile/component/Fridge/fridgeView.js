@@ -53,7 +53,6 @@ class Fridge extends Component {
   getYourFridge = () => {
     const that = this;
     AsyncStorage.getItem('name').then((name) => {
-      console.log('name',name);
       this.props.fridgeActions.getFridge(name);
       this.setState({'currentUser': name});
     })
