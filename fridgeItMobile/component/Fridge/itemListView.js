@@ -17,7 +17,10 @@ const ItemList = (props) => {
 			<View>
 				{props.items.map(item => {
 					return( 
-					<Text key={item.id}>{item.name}{item.quantity} </Text>
+					<View key={item.id}>
+						<Text>{item.name}{item.quantity} </Text>
+						<Text>Expiration Date: {item.expiry || 'none'}</Text>
+					</View>
 					)
 				})
 				}

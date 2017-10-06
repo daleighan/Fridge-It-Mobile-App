@@ -79,54 +79,54 @@ class Fridge extends Component {
               style={{width: 55, height: 55}}
               source={require('./frozen.png')}
             >
-              <Text>Frozen</Text>
-              <ItemList actions={itemActions} type="frozen" items={this.filterItems("frozen")} /> 
             </Image>
+            <Text>Frozen</Text>
+            <ItemList actions={itemActions} type="frozen" items={this.filterItems("frozen")} /> 
           </View>
           <View>
             <Image
               style={{width: 55, height: 55}}
               source={require('./protein.png')}
             >
-              <Text>Protein</Text>
-              <ItemList actions={itemActions} type="protein" items={this.filterItems("protein")} />
             </Image>
+            <Text>Protein</Text>
+            <ItemList actions={itemActions} type="protein" items={this.filterItems("protein")} />
           </View>
           <View>
             <Image
               style={{width: 55, height: 55}}
               source={require('./grains.png')}
             >
-              <Text>Grains</Text>
-              <ItemList actions={itemActions} type="grains" items={this.filterItems("grains")} />
             </Image>
+            <Text>Grains</Text>
+            <ItemList actions={itemActions} type="grains" items={this.filterItems("grains")} />
           </View>
           <View>
             <Image
               style={{width: 55, height: 55}}
               source={require('./dairy.png')}
             >
-              <Text>Dairy</Text>
-              <ItemList actions={itemActions} type="dairy" items={this.filterItems("dairy")} />
             </Image>
+            <Text>Dairy</Text>
+            <ItemList actions={itemActions} type="dairy" items={this.filterItems("dairy")} />
           </View>
           <View>
             <Image
               style={{width: 55, height: 55}}
               source={require('./produce.png')}
             >
-              <Text>Produce</Text>
-              <ItemList actions={itemActions} type="produce" items={this.filterItems("produce")} />
             </Image>
+            <Text>Produce</Text>
+            <ItemList actions={itemActions} type="produce" items={this.filterItems("produce")} />
           </View>
           <View>
             <Image
               style={{width: 55, height: 55}}
               source={require('./misc.png')}
             >
-              <Text>Misc</Text>
-              <ItemList actions={itemActions} type="misc" items={this.filterItems("misc")} />
             </Image>
+            <Text>Misc</Text>
+            <ItemList actions={itemActions} type="misc" items={this.filterItems("misc")} />
           </View>
         </View>
       </View>
