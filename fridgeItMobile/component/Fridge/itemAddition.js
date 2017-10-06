@@ -22,12 +22,26 @@ class ItemAddition extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			foodType: '',
+			foodType: 'Produce',
 			expirationDate: '',
 			itemName: '',
 			itemQTY: 0
 
 		}
+	}
+
+	handleSubmit = () => {
+		const { itemActions, fridge } = this.props;
+		AsyncStorage.getItem('name').then((user) => {
+			console.log(this.state.foodType);
+			let item = {
+				name: this.state.itemName,
+				quantity: this.state.itemQTY,
+				type: this.state.foodType,
+				user: user
+			}
+			itemActions.addItem(item, fridge.id);
+		});
 	}
 
 	render = () => {
@@ -55,6 +69,7 @@ class ItemAddition extends Component {
 				<DatePicker 
 					onDateChange={(date) => {this.setState({ date, })}}
 				/> 
+				<Button title="Submit" onPress={this.handleSubmit} />
 			</View>
 		)
 	}
