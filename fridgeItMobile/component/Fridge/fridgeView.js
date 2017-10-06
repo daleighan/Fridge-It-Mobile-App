@@ -60,7 +60,9 @@ class Fridge extends Component {
           <TextInput onChangeText={(text) => this.setState({ otherUsernameText: text })} />
           <Button title="Submit" onPress={this.handleSwitch} />
         </View>
-
+        <View>
+          <ItemAddition />
+        </View>
         <View>
           {types.map((type) => {
             let filteredItems = this.filterItems(type.name);
