@@ -60,9 +60,6 @@ class HomeView extends Component {
 							<Link to="/home">
 								<Text style={styles.btn}>My Fridge</Text>
 							</Link>
-							<Link to="/addition">
-								<Text style={styles.btn}>Add an Item</Text>
-							</Link>
 							<Link to="/messages">
 								<Text style={styles.btn}>Current Fridge Messages</Text>
 							</Link>
