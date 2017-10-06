@@ -54,7 +54,7 @@ export function updateItem(item, id) {
 
 export function deleteItem(id) {
   return function(dispatch) {
-    axios.delete('https://immense-gorge-29906.herokuapp.com/home/api/items/' + id)
+    axios.delete('https://immense-gorge-29906.herokuapp.com/api/items/' + id)
       .then((response) => {
         dispatch({type: 'DELETE_ITEM_FULFILLED', payload: response.data});
         dispatch({type: 'NEW_ITEM_POSTED'});
