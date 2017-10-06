@@ -21,10 +21,12 @@ import { connect } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import * as authActions from '../../actions/authActions.js';
+import * as fridgeActions from '../../actions/fridgeActions.js';
 
 import Home from '../Home/home.js';
 import Messages from '../Message/messagesListView.js';
 import Fridge from '../Fridge/fridgeView.js';
+import ItemAddition from '../Fridge/itemAddition.js';
 
 
 class HomeView extends Component {
@@ -44,7 +46,9 @@ class HomeView extends Component {
 	componentWillMount = () => {
 		AsyncStorage.getItem('name').then((name) => {
 			this.setState({ name, });
-		});
+		}).then(() => {
+			this.props.fridgeActions.getFridge(this.state.name);
+		}).catch((err) => console.log(err));
 	}
 
 	render = () => {
@@ -54,16 +58,20 @@ class HomeView extends Component {
 					<View>
 						<View>
 							<Link to="/home">
-								<Text style={styles.btn}>Go Home</Text>
+								<Text style={styles.btn}>My Fridge</Text>
+							</Link>
+							<Link to="/addition">
+								<Text style={styles.btn}>Add an Item</Text>
 							</Link>
 							<Link to="/messages">
-								<Text style={styles.btn}>Messages</Text>
+								<Text style={styles.btn}>Current Fridge Messages</Text>
 							</Link>
 							<Text style={styles.btn}>{this.state.name}</Text>
 							<Button onPress={this.logout} title="Logout" />
 						</View>
-						<Route path="/home" component={Home} />
+						<Route path="/home" component={Home}/>
 						<Route path="/messages" component={Messages} />
+						<Route path="/addition" component={ItemAddition} />
 					</View>
 				</NativeRouter>
 			</ScrollView>
@@ -73,7 +81,7 @@ class HomeView extends Component {
 
 const styles = StyleSheet.create({
   btn: {
-    fontSize: 30
+    fontSize: 20
   }
 });
 
@@ -86,7 +94,8 @@ const homeState = (store) => {
 
 const homeDispatch = (dispatch) => {
   return {
-    actions: bindActionCreators(authActions, dispatch)
+    actions: bindActionCreators(authActions, dispatch),
+    fridgeActions: bindActionCreators(fridgeActions, dispatch)
   }
 };
 

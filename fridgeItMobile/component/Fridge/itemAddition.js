@@ -26,7 +26,6 @@ class ItemAddition extends Component {
 			expirationDate: '',
 			itemName: '',
 			itemQTY: 0
-
 		}
 	}
 
@@ -45,7 +44,6 @@ class ItemAddition extends Component {
 	}
 
 	render = () => {
-		console.log(this.state);
 		return (
 			<View>
 				<Text>Add an Item</Text>

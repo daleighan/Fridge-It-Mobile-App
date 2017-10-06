@@ -9,6 +9,7 @@ import {
   AsyncStorage,
   TextInput
 } from 'react-native';
+import { Link } from 'react-router-native';
 // import SvgUri from 'react-native-svg-uri';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -61,72 +62,69 @@ class Fridge extends Component {
 
   render = () => {
     let { fridge, fridgeActions, itemActions } = this.props;
+    console.log(this.props);
     return (
       <View>
         <View>
           <Text>Find Another User's Fridge</Text>
           <TextInput onChangeText={(text) => this.setState({ otherUsernameText: text })} />
           <Button title="Submit" onPress={this.handleSwitch} />
-          <Button title="Your Fridge" onPress={this.getYourFridge} />
+          <Button title="Back To Your Fridge" onPress={this.getYourFridge} />
         </View>
         <View>
-          <ItemAddition />
-        </View>
-        <View>
-              <View>
-                <Image
-                  style={{width: 55, height: 55}}
-                  source={require('./frozen.png')}
-                >
-                <Text>Frozen</Text>
-                </Image>
-              </View>
-              <View>
-                <Image
-                  style={{width: 55, height: 55}}
-                  source={require('./protein.png')}
-                >
-                <Text>Protein</Text>
-                </Image>
-              </View>
-              <View>
-                <Image
-                  style={{width: 55, height: 55}}
-                  source={require('./grains.png')}
-                >
-                <Text>Grains</Text>
-                </Image>
-              </View>
-              <View>
-                <Image
-                  style={{width: 55, height: 55}}
-                  source={require('./dairy.png')}
-                >
-                <Text>Dairy</Text>
-                </Image>
-              </View>
-              <View>
-                <Image
-                  style={{width: 55, height: 55}}
-                  source={require('./produce.png')}
-                >
-                <Text>Produce</Text>
-                </Image>
-              </View>
-              <View>
-                <Image
-                  style={{width: 55, height: 55}}
-                  source={require('./misc.png')}
-                >
-                <Text>Misc</Text>
-                </Image>
-              </View>
+          <View>
+            <Image
+              style={{width: 55, height: 55}}
+              source={require('./frozen.png')}
+            >
+            <Text>Frozen</Text>
+            </Image>
+          </View>
+          <View>
+            <Image
+              style={{width: 55, height: 55}}
+              source={require('./protein.png')}
+            >
+            <Text>Protein</Text>
+            </Image>
+          </View>
+          <View>
+            <Image
+              style={{width: 55, height: 55}}
+              source={require('./grains.png')}
+            >
+            <Text>Grains</Text>
+            </Image>
+          </View>
+          <View>
+            <Image
+              style={{width: 55, height: 55}}
+              source={require('./dairy.png')}
+            >
+            <Text>Dairy</Text>
+            </Image>
+          </View>
+          <View>
+            <Image
+              style={{width: 55, height: 55}}
+              source={require('./produce.png')}
+            >
+            <Text>Produce</Text>
+            </Image>
+          </View>
+          <View>
+            <Image
+              style={{width: 55, height: 55}}
+              source={require('./misc.png')}
+            >
+            <Text>Misc</Text>
+            </Image>
+          </View>
         </View>
       </View>
     )
   }
 }
-
 
 const fridgeState = (store) => {
   return {
