@@ -81,6 +81,7 @@ class HomeView extends Component {
 
 const styles = StyleSheet.create({
 	container1: {
+		paddingTop: 7,
   	width: 360,
   	height: 80,
     flexDirection: 'row', 

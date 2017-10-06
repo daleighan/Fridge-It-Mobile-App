@@ -58,6 +58,7 @@ class Home extends Component {
 			return (
 				<View>
 					<Button title="Create a Fridge" onPress={this.createFridge} />
+					<Text>If you have not already created your own fridge, please click on "MY FRIDGE" and then create a new one and start adding items!</Text>
 				</View>
 			)
 		}
