@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   Button,
-  Image,
   AsyncStorage,
   TextInput
 } from 'react-native';
@@ -13,7 +11,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Moment from 'react-moment';
 
-import MessageListEntry from './messageListEntry.js';
 import * as messageActions from '../../actions/messageActions.js';
 
 class MessageListView extends Component {
@@ -37,7 +34,6 @@ class MessageListView extends Component {
   }
 
 	render = () => {
-    console.log(this.props)
     const { messageList, username, actions } = this.props;
 		return (
 			<View>
@@ -56,8 +52,7 @@ class MessageListView extends Component {
                 }
               </View>
             )
-          })
-          }
+          })}
       </View>
 		)
 	}

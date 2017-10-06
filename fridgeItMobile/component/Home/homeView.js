@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   Button,
-  Image,
   AsyncStorage,
   ScrollView
 } from 'react-native';
 
 import { 
 	NativeRouter, 
-	Router, 
 	Route, 
 	Link, 
 	nativeHistory, 
@@ -25,7 +22,6 @@ import * as fridgeActions from '../../actions/fridgeActions.js';
 
 import Home from '../Home/home.js';
 import Messages from '../Message/messagesListView.js';
-import Fridge from '../Fridge/fridgeView.js';
 import ItemAddition from '../Fridge/itemAddition.js';
 
 

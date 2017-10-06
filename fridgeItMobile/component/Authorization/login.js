@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View, 
   Image,
   TextInput,
   Button,
-  AsyncStorage
 } from 'react-native';
 import { Link } from 'react-router-native';
 import { connect } from 'react-redux';
