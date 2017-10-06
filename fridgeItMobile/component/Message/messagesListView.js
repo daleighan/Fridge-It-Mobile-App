@@ -37,7 +37,8 @@ class MessageListView extends Component {
   }
 
 	render = () => {
-    const { messageList } = this.props;
+    console.log(this.props)
+    const { messageList, username, actions } = this.props;
 		return (
 			<View>
         <Text>Post A Message!</Text>
@@ -50,6 +51,9 @@ class MessageListView extends Component {
                 <Text>user: {message.user}</Text>
                 <Text>{message.messageText}</Text>
                 <Moment fromNow element={Text} date={message.createdAt} />
+                {
+                  message.user === username ? <Button title="Delete" onPress={() => actions.deleteMessages(message.id)} /> : null
+                }
               </View>
             )
           })
