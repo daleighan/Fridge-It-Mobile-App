@@ -78,58 +78,70 @@ class Fridge extends Component {
         </View>
         <View>
           <Text style={styles.name}>{fridge.name}'s Fridge</Text>
-          <View>
-            <Image
-              style={{width: 55, height: 55}}
-              source={require('./frozen.png')}
-            >
-            </Image>
-            <Text>Frozen</Text>
+          <View style={styles.category}>
+            <View style={styles.imageContain}>
+              <Text>Frozen</Text>
+              <Image
+                style={styles.img}
+                source={require('./frozen.png')}
+              >
+              </Image>
+            </View>
             <ItemList fridge={fridge} actions={itemActions} type="frozen" items={this.filterItems("frozen")} /> 
           </View>
-          <View>
-            <Image
-              style={{width: 55, height: 55}}
-              source={require('./protein.png')}
-            >
-            </Image>
-            <Text>Protein</Text>
+          <View style={styles.category}>
+            <View style={styles.imageContain}>
+              <Text>Protein</Text>
+              <Image
+                style={styles.img}
+                source={require('./protein.png')}
+              >
+              </Image>
+            </View>
             <ItemList fridge={fridge} actions={itemActions} type="protein" items={this.filterItems("protein")} />
           </View>
-          <View>
-            <Image
-              style={{width: 55, height: 55}}
-              source={require('./grains.png')}
-            >
-            </Image>
-            <Text>Grains</Text>
+          <View style={styles.category}>
+            <View style={styles.imageContain}>
+              <Text>Grains</Text>
+              <Image
+                style={styles.img}
+                source={require('./grains.png')}
+              >
+              </Image>
+            </View>
             <ItemList fridge={fridge} actions={itemActions} type="grains" items={this.filterItems("grains")} />
           </View>
-          <View>
-            <Image
-              style={{width: 55, height: 55}}
-              source={require('./dairy.png')}
-            >
-            </Image>
-            <Text>Dairy</Text>
+          <View style={styles.category}>
+            <View style={styles.imageContain}>
+              <Text>Dairy</Text>
+              <Image
+                style={styles.img}
+                source={require('./dairy.png')}
+              >
+              </Image>
+            </View>
             <ItemList fridge={fridge} actions={itemActions} type="dairy" items={this.filterItems("dairy")} />
           </View>
-          <View>
-            <Image
-              style={{width: 55, height: 55}}
-              source={require('./produce.png')}
-            >
-            </Image>
-            <Text>Produce</Text>
+          <View style={styles.category}>
+            <View style={styles.imageContain}>
+              <Text>Produce</Text>
+              <Image
+                style={styles.img}
+                source={require('./produce.png')}
+              >
+              </Image>
+            </View>
             <ItemList fridge={fridge} actions={itemActions} type="produce" items={this.filterItems("produce")} />
           </View>
-          <View>
-            <Image
-              style={{width: 55, height: 55}}
-              source={require('./misc.png')}
-            >
-            </Image>
-            <Text>Misc</Text>
+          <View style={styles.category}>
+            <View style={styles.imageContain}>
+              <Text>Misc</Text>
+              <Image
+                style={styles.img}
+                source={require('./misc.png')}
+              >
+              </Image>
+            </View>
             <ItemList fridge={fridge} actions={itemActions} type="misc" items={this.filterItems("misc")} />
           </View>
         </View>
@@ -188,6 +200,21 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     marginTop: 10,
     marginBottom: 20
+  },
+  category: {
+    flex: 1,
+    margin: 15,
+    borderWidth: 1,
+    padding: 7,
+    borderRadius: 7,
+  },
+  imageContain: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  img: {
+    width: 55, 
+    height: 55,
   }
 });
 
