@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import DatePicker from 'react-native-datepicker';
 
 import moment from 'moment';
 import * as itemActions from '../../actions/itemActions.js';
@@ -25,6 +26,7 @@ class ItemAddition extends Component {
 		return (
 			<View>
 				<Text>Item Addition</Text>
+				<DatePicker /> 
 			</View>
 		)
 	}

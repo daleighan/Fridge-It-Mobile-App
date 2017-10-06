@@ -24,15 +24,18 @@ class Home extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
+		const that = this;
 		AsyncStorage.getItem('name').then((name) => {
+			console.log('name',name);
 			this.props.actions.getFridge(name);
 			this.setState({'currentUser': name});
-		}).then(() => {
-			AsyncStorage.getItem('fid').then((fId) => {
-        this.props.itemActions.getItems(fId);
+		})
+		setTimeout(() => {
+      AsyncStorage.getItem('fid').then((fId) => {
+        that.props.itemActions.getItems(fId);
       })
-    }).catch((err) => console.log(err));
+    }, 200);
 	}
 
 	createFridge = (e) => {

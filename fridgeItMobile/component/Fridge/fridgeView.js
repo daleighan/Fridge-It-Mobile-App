@@ -22,20 +22,23 @@ class Fridge extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      otherUsernameText: ''
+      otherUsernameText: '',
+      toggle: true
     }
   }
 
 
-  componentDidMount() {
+  componentWillReceiveProps = () => {
+    let that = this;
     AsyncStorage.getItem('name').then((name) => {
-      this.props.actions.getFridge(name);
-      this.setState({'currentUser': name});
-    }).then(() => {
-      AsyncStorage.getItem('fid').then((fId) => {
-        this.props.itemActions.getItems(fId);
-      })
-    }).catch((err) => console.log(err));
+      console.log('name', name)
+    })
+
+    // setTimeout(() => {
+    //   AsyncStorage.getItem('fid').then((fId) => {
+    //     that.props.itemActions.getItems(fId);
+    //   })
+    // }, 200);
   };
 
 
@@ -47,8 +50,28 @@ class Fridge extends Component {
     })
   };
 
+  getYourFridge = () => {
+    const that = this;
+    AsyncStorage.getItem('name').then((name) => {
+      console.log('name',name);
+      this.props.fridgeActions.getFridge(name);
+      this.setState({'currentUser': name});
+    })
+    setTimeout(() => {
+      AsyncStorage.getItem('fid').then((fId) => {
+        that.props.itemActions.getItems(fId);
+      })
+    }, 200);
+  }
+
   handleSwitch = () => {
-    this.props.fridgeActions.getFridge(this.state.otherUsernameText)
+    const that = this;
+    this.props.fridgeActions.getFridge(this.state.otherUsernameText);
+    setTimeout(() => {
+      AsyncStorage.getItem('fid').then((fId) => {
+        that.props.itemActions.getItems(fId);
+      })
+    }, 200);
   }
 
   render = () => {
@@ -59,6 +82,7 @@ class Fridge extends Component {
           <Text>Find Another User's Fridge</Text>
           <TextInput onChangeText={(text) => this.setState({ otherUsernameText: text })} />
           <Button title="Submit" onPress={this.handleSwitch} />
+          <Button title="Your Fridge" onPress={this.getYourFridge} />
         </View>
         <View>
           <ItemAddition />
