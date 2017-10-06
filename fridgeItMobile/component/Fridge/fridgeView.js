@@ -26,22 +26,7 @@ class Fridge extends Component {
       toggle: true
     }
   }
-
-
-  componentWillReceiveProps = () => {
-    let that = this;
-    AsyncStorage.getItem('name').then((name) => {
-      console.log('name', name)
-    })
-
-    // setTimeout(() => {
-    //   AsyncStorage.getItem('fid').then((fId) => {
-    //     that.props.itemActions.getItems(fId);
-    //   })
-    // }, 200);
-  };
-
-
+  
   filterItems = (type) => {
     return this.props.items.filter((item) => {
       if (item.type === type) {
