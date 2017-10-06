@@ -22,6 +22,8 @@ import { bindActionCreators } from 'redux';
 import * as authActions from '../../actions/authActions.js';
 
 import Home from '../Home/home.js';
+import Messages from '../Message/messagesListView.js';
+import Fridge from '../Fridge/fridgeView.js';
 
 
 class HomeView extends Component {
@@ -31,7 +33,6 @@ class HomeView extends Component {
 			name: ''	
 		}
 	}
-
 
 	logout = (e) => {
 		let that = this
@@ -54,10 +55,18 @@ class HomeView extends Component {
 							<Link to="/home">
 								<Text>Go Home</Text>
 							</Link>
+							<Link to="/fridge">
+								<Text>Fridges</Text>
+							</Link>
+							<Link to="/messages">
+								<Text>Messages</Text>
+							</Link>
 							<Text>{this.state.name}</Text>
 							<Button onPress={this.logout} title="Logout" />
 						</View>
 						<Route path="/home" component={Home} />
+						<Route path="/fridge" component={Fridge} />
+						<Route path="/messages" component={Messages} />
 					</View>
 				</NativeRouter>
 			</View>

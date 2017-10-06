@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Axios from 'axios';
 
 import Messages from '../Message/messagesListView.js';
 import Fridge from '../Fridge/fridgeView.js';
@@ -44,7 +43,11 @@ class Home extends Component {
 	render = () => {
 		const { actions, fetched, posted } = this.props;
 		if (fetched || posted) {
-			return (<Text>Fetched or Posted </Text>)
+			return (
+				<View>
+					<Fridge />
+				</View>
+			)
 		} else {
 			return (
 				<View>
