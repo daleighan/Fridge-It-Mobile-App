@@ -22,7 +22,7 @@ class ItemAddition extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			foodType: 'Produce',
+			foodType: 'produce',
 			expirationDate: '',
 			itemName: '',
 			itemQTY: 0
@@ -59,9 +59,9 @@ class ItemAddition extends Component {
 					<Picker.Item label="produce" value="produce" />
 					<Picker.Item label="dairy" value="dairy" />
 					<Picker.Item label="protein" value="protein" />
-					<Picker.Item label="grains and starches" value="grains and starches" />
+					<Picker.Item label="grains and starches" value="grains" />
 					<Picker.Item label="frozen" value="frozen" />
-					<Picker.Item label="miscellaneous" value="miscellaneous" />
+					<Picker.Item label="miscellaneous" value="misc" />
 				</Picker>
 				<Text>Expiration Date:</Text>
 				<DatePicker 

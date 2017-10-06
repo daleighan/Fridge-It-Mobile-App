@@ -61,7 +61,6 @@ class Fridge extends Component {
 
   render = () => {
     let { fridge, fridgeActions, itemActions } = this.props;
-    console.log(this.props);
     return (
       <View>
         <View>
@@ -82,7 +81,7 @@ class Fridge extends Component {
             >
             </Image>
             <Text>Frozen</Text>
-            <ItemList fridge={this.props.fridge} actions={itemActions} type="frozen" items={this.filterItems("frozen")} /> 
+            <ItemList fridge={fridge} actions={itemActions} type="frozen" items={this.filterItems("frozen")} /> 
           </View>
           <View>
             <Image
@@ -91,7 +90,7 @@ class Fridge extends Component {
             >
             </Image>
             <Text>Protein</Text>
-            <ItemList fridge={this.props.fridge} actions={itemActions} type="protein" items={this.filterItems("protein")} />
+            <ItemList fridge={fridge} actions={itemActions} type="protein" items={this.filterItems("protein")} />
           </View>
           <View>
             <Image
@@ -100,7 +99,7 @@ class Fridge extends Component {
             >
             </Image>
             <Text>Grains</Text>
-            <ItemList fridge={this.props.fridge} actions={itemActions} type="grains" items={this.filterItems("grains")} />
+            <ItemList fridge={fridge} actions={itemActions} type="grains" items={this.filterItems("grains")} />
           </View>
           <View>
             <Image
@@ -109,7 +108,7 @@ class Fridge extends Component {
             >
             </Image>
             <Text>Dairy</Text>
-            <ItemList fridge={this.props.fridge} actions={itemActions} type="dairy" items={this.filterItems("dairy")} />
+            <ItemList fridge={fridge} actions={itemActions} type="dairy" items={this.filterItems("dairy")} />
           </View>
           <View>
             <Image
@@ -118,7 +117,7 @@ class Fridge extends Component {
             >
             </Image>
             <Text>Produce</Text>
-            <ItemList fridge={this.props.fridge} actions={itemActions} type="produce" items={this.filterItems("produce")} />
+            <ItemList fridge={fridge} actions={itemActions} type="produce" items={this.filterItems("produce")} />
           </View>
           <View>
             <Image
@@ -127,7 +126,7 @@ class Fridge extends Component {
             >
             </Image>
             <Text>Misc</Text>
-            <ItemList fridge={this.props.fridge} actions={itemActions} type="misc" items={this.filterItems("misc")} />
+            <ItemList fridge={fridge} actions={itemActions} type="misc" items={this.filterItems("misc")} />
           </View>
         </View>
       </View>
