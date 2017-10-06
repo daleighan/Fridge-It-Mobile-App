@@ -23,13 +23,20 @@ class MessageListView extends Component {
     }
 	}
 
+  componentWillMount() {
+    const that = this;
+    AsyncStorage.getItem('fid').then((user) => {
+      that.props.actions.fetchMessages(user);
+    });
+  }
+
   handleSubmit = () => {
-    console.log(this.props)
     const { fridge, username, actions } = this.props;
     actions.postMessages(fridge.id, username, this.state.text);
   }
 
 	render = () => {
+    console.log(this.props);
 		return (
 			<View>
         <Text>Post A Message!</Text>
