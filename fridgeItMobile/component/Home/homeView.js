@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 70, 
     height: 70, 
-    backgroundColor: '#3B86D2'
+    backgroundColor: '#3B86D2',
   },
   logoText: {
     width: 160, 
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     marginLeft: 5,
     borderLeftWidth: 0.75,
-    borderColor: 'grey'
+    borderColor: 'grey',
   },
   btn: {
   	width: 120,

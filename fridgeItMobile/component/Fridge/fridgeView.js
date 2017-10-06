@@ -172,7 +172,8 @@ const styles = StyleSheet.create({
   twoWide: {
     width: 360,
     flexDirection: 'row', 
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    marginRight: 100
   }
 });
 

@@ -23,8 +23,8 @@ class MessageListView extends Component {
 
   componentWillMount() {
     const that = this;
-    AsyncStorage.getItem('fid').then((user) => {
-      that.props.actions.fetchMessages(user);
+    AsyncStorage.getItem('fid').then((fId) => {
+      that.props.actions.fetchMessages(fId);
     });
   }
 
