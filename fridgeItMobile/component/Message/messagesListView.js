@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Moment from 'react-moment';
 
 import MessageListEntry from './messageListEntry.js';
 import * as messageActions from '../../actions/messageActions.js';
@@ -36,12 +37,23 @@ class MessageListView extends Component {
   }
 
 	render = () => {
-    console.log(this.props);
+    const { messageList } = this.props;
 		return (
 			<View>
         <Text>Post A Message!</Text>
         <TextInput onChangeText={(text) => this.setState({ text, })} />
         <Button title='Post Message' onPress={this.handleSubmit} />
+        <Text>This Fridge's Messages:</Text>
+          {messageList.map((message) => {
+            return (
+              <View key={message.id}>
+                <Text>user: {message.user}</Text>
+                <Text>{message.messageText}</Text>
+                <Moment fromNow element={Text} date={message.createdAt} />
+              </View>
+            )
+          })
+          }
       </View>
 		)
 	}
