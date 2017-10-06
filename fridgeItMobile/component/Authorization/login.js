@@ -17,7 +17,8 @@ class Login extends Component {
 		super(props);
 		this.state = {
 			usernameText: '',
-			passwordText: ''
+			passwordText: '',
+			active: false
 		}
 	}
 
@@ -36,7 +37,7 @@ class Login extends Component {
 					<TextInput onChangeText={(text) => this.setState({ usernameText: text })} />
 				<Text style={styles.txt2}>Password</Text>
 					<TextInput secureTextEntry={true} onChangeText={(text) => this.setState({ passwordText: text})} />
-				<Button style={styles.btn} onPress={this.emailSignin} title="submit" />
+				<Text style={styles.signup} onPress={this.emailSignin}>SUBMIT</Text>
 				<Text style={styles.txt2}>Don't have an account yet?</Text>
 				<Link to="/signup">
         	<Text style={styles.signup}>SIGNUP</Text>
@@ -45,6 +46,14 @@ class Login extends Component {
 		)
 	}
 }
+
+const loginDispatch = (dispatch) => {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  }
+};
+
+export default connect(null, loginDispatch)(Login);
 
 const styles = StyleSheet.create({
 	body: {
@@ -67,22 +76,14 @@ const styles = StyleSheet.create({
 		paddingTop: 3,
 		paddingBottom: 6
 	},
-	btn: {
-		borderRadius: 5
-	},
 	signup: {
 		textAlign: 'center',
 		fontSize: 14,
 		borderWidth: 1,
 		borderRadius: 2,
-		padding: 5
+		padding: 5,
+		backgroundColor: '#3B86D2',
+		fontWeight: 'bold',
+		color: 'white'
 	}
 });
-
-const loginDispatch = (dispatch) => {
-  return {
-    actions: bindActionCreators(authActions, dispatch)
-  }
-};
-
-export default connect(null, loginDispatch)(Login);
