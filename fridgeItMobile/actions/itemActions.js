@@ -4,8 +4,9 @@ import axios from 'axios';
 //uses reducers as part of promises to change state
 
 export function getItems(fridgeId) {
+  console.log(fridgeId);
   return function(dispatch) {
-    axios.get('https://immense-gorge-29906.herokuapp.com/home/api/items/' + fridgeId)
+    axios.get('https://immense-gorge-29906.herokuapp.com/api/items/' + fridgeId)
       .then(({ data }) => {
         dispatch({type: 'FETCH_ITEMS_FULFILLED', payload: data});
       })
@@ -17,7 +18,7 @@ export function getItems(fridgeId) {
 
 export function addItem(item, id) {
   return function(dispatch) {
-    axios.post('https://immense-gorge-29906.herokuapp.com/home/api/items', {
+    axios.post('https://immense-gorge-29906.herokuapp.com/api/items', {
       name: item.name,
       quantity: item.quantity,
       type: item.type,
@@ -36,7 +37,7 @@ export function addItem(item, id) {
 
 export function updateItem(item, id) {
   return function(dispatch) {
-    axios.patch('https://immense-gorge-29906.herokuapp.com/home/api/items/' + id, {
+    axios.patch('https://immense-gorge-29906.herokuapp.com/api/items/' + id, {
       name: item.name,
       quantity: item.quantity, 
       type: item.type,

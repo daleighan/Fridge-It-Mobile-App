@@ -22,6 +22,35 @@ class Fridge extends Component {
     super(props);
   }
 
+
+  componentDidMount() {
+    let that = this;
+    AsyncStorage.getItem('name').then((name) => {
+      that.props.fridgeActions.getFridge(name);
+    }).then(() => {
+      AsyncStorage.getItem('fid').then((fId) => {
+        console.log(fId);
+        that.props.itemActions.getItems(fId);
+      }).catch((err) => console.log(err));
+    });
+  };
+
+  // componentDidMount() {
+  //   this.props.fridgeActions.getFridge(localStorage.getItem('visitorId') || localStorage.getItem('name'));
+  //   let state = this;
+  //   setTimeout(() => {
+  //     state.props.itemActions.getItems(localStorage.getItem('fId'));
+  //   }, 500);
+  // };
+
+  filterItems = (type) => {
+    return this.props.items.filter((item) => {
+      if (item.type === type) {
+        return item; 
+      }
+    })
+  };
+
   render = () => {
     return (
       <Text>Fridge</Text>
