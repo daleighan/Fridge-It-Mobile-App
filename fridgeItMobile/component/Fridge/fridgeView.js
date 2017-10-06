@@ -66,16 +66,18 @@ class Fridge extends Component {
         <View>
           <Text>Find Another User's Fridge by E-mail</Text>
           <TextInput onChangeText={(text) => this.setState({ otherUsernameText: text })} />
-          <Text style={styles.btn} onPress={this.handleSwitch}>Submit</Text>
-          <View style={styles.twoWide}>
-            <Text style={styles.btn} onPress={this.getYourFridge}>Back To Your Fridge</Text>
-            <Link to="/addition">
-              <Text style={styles.btn}>Add an Item</Text>
-            </Link>
+          <View style={styles.buttons}>
+            <Text style={styles.btn} onPress={this.handleSwitch}>Submit</Text>
+            <View style={styles.twoWide}>
+              <Text style={styles.btn} onPress={this.getYourFridge}>Back To Your Fridge</Text>
+              <Link to="/addition">
+                <Text style={styles.btn}>Add an Item</Text>
+              </Link>
+            </View>
           </View>
         </View>
         <View>
-          <Text>{fridge.name}'s Fridge</Text>
+          <Text style={styles.name}>{fridge.name}'s Fridge</Text>
           <View>
             <Image
               style={{width: 55, height: 55}}
@@ -156,7 +158,12 @@ const fridgeDispatch = (dispatch) => {
 export default connect(fridgeState, fridgeDispatch)(Fridge); 
 
 const styles = StyleSheet.create({
+  buttons: {
+    marginLeft: 12,
+    marginRight: 12
+  },
   btn: {
+    margin: 1,
     fontSize: 20,
     height: 50,
     textAlign: 'center',
@@ -164,7 +171,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 2,
     padding: 13,
-    margin: 3,
+    marginTop: 3,
     backgroundColor: '#3B86D2',
     fontWeight: 'bold',
     color: 'white'
@@ -174,6 +181,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     justifyContent: 'flex-start',
     marginRight: 100
+  },
+  name: {
+    fontSize: 26,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    marginTop: 10,
+    marginBottom: 20
   }
 });
 
