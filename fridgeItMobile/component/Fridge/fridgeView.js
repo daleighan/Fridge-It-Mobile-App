@@ -9,6 +9,7 @@ import {
   AsyncStorage,
   TextInput
 } from 'react-native';
+// import SvgUri from 'react-native-svg-uri';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -72,12 +73,54 @@ class Fridge extends Component {
           <ItemAddition />
         </View>
         <View>
-          {types.map((type) => {
-            let filteredItems = this.filterItems(type.name);
-            return (
-              <Text key={type.id}>{type.name}</Text>
-            )
-          })}
+              <View>
+                <Image
+                  style={{width: 55, height: 55}}
+                  source={require('./frozen.png')}
+                >
+                <Text>Frozen</Text>
+                </Image>
+              </View>
+              <View>
+                <Image
+                  style={{width: 55, height: 55}}
+                  source={require('./protein.png')}
+                >
+                <Text>Protein</Text>
+                </Image>
+              </View>
+              <View>
+                <Image
+                  style={{width: 55, height: 55}}
+                  source={require('./grains.png')}
+                >
+                <Text>Grains</Text>
+                </Image>
+              </View>
+              <View>
+                <Image
+                  style={{width: 55, height: 55}}
+                  source={require('./dairy.png')}
+                >
+                <Text>Dairy</Text>
+                </Image>
+              </View>
+              <View>
+                <Image
+                  style={{width: 55, height: 55}}
+                  source={require('./produce.png')}
+                >
+                <Text>Produce</Text>
+                </Image>
+              </View>
+              <View>
+                <Image
+                  style={{width: 55, height: 55}}
+                  source={require('./misc.png')}
+                >
+                <Text>Misc</Text>
+                </Image>
+              </View>
         </View>
       </View>
     )
@@ -108,35 +151,29 @@ const types = [
 {
   id: 1,
   name: 'produce', 
-  position: 'top center',
-  display: 'Produce'
+  img: 'produce.png'
 }, 
 {
   id: 2,
   name: 'dairy', 
-  position: 'top left',
-  display: 'Dairy'
+  img: 'dairy.png'
 },
 { id: 3,
   name: 'protein',
-  position: 'left center',
-  display: 'Protein'
+  img: 'protein.png'
 },
 { 
   id: 4,
   name: 'grains',
-  position: 'top right',
-  display: 'Grains'
+  img: 'grains.png'
 }, 
 {
   id: 5,
   name: 'frozen',
-  position: 'right center',
-  display: 'Frozen'
+  img: 'frozen.png'
 }, 
 { id: 6,
   name: 'misc',
-  position: 'top left',
-  display: 'Misc'
+  img: 'misc.png'
 }
 ]; 
