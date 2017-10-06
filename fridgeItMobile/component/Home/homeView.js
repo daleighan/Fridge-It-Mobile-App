@@ -6,7 +6,8 @@ import {
   View,
   Button,
   Image,
-  AsyncStorage
+  AsyncStorage,
+  ScrollView
 } from 'react-native';
 
 import { 
@@ -48,7 +49,7 @@ class HomeView extends Component {
 
 	render = () => {
 		return (
-			<View>				
+			<ScrollView>				
 				<NativeRouter history={nativeHistory}>
 					<View>
 						<View>
@@ -65,7 +66,7 @@ class HomeView extends Component {
 						<Route path="/messages" component={Messages} />
 					</View>
 				</NativeRouter>
-			</View>
+			</ScrollView>
 		)
 	}
 } 

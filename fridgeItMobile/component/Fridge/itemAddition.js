@@ -23,7 +23,10 @@ class ItemAddition extends Component {
 		super(props);
 		this.state = {
 			foodType: '',
-			expirationDate: ''
+			expirationDate: '',
+			itemName: '',
+			itemQTY: 0
+
 		}
 	}
 
@@ -32,6 +35,11 @@ class ItemAddition extends Component {
 		return (
 			<View>
 				<Text>Add an Item</Text>
+				<Text>Item Name</Text>
+				<TextInput onChangeText={(text) => this.setState({ itemName: text })} />
+				<Text>Item Quantity</Text>
+				<TextInput defaultValue="0" onChangeText={(number) => this.setState({ itemQTY: number })} />
+				<Text>Food Type</Text>
 				<Picker 
 					selectedValue={this.state.foodType}
 					onValueChange={(itemValue, itemIndex) => this.setState({foodType: itemValue})

@@ -26,7 +26,7 @@ class Fridge extends Component {
       toggle: true
     }
   }
-  
+
   filterItems = (type) => {
     return this.props.items.filter((item) => {
       if (item.type === type) {
@@ -75,7 +75,7 @@ class Fridge extends Component {
           {types.map((type) => {
             let filteredItems = this.filterItems(type.name);
             return (
-              <Text>{type.name}</Text>
+              <Text key={type.id}>{type.name}</Text>
             )
           })}
         </View>
@@ -106,31 +106,35 @@ export default connect(fridgeState, fridgeDispatch)(Fridge);
 
 const types = [
 {
+  id: 1,
   name: 'produce', 
   position: 'top center',
   display: 'Produce'
 }, 
 {
+  id: 2,
   name: 'dairy', 
   position: 'top left',
   display: 'Dairy'
 },
-{
+{ id: 3,
   name: 'protein',
   position: 'left center',
   display: 'Protein'
 },
-{
+{ 
+  id: 4,
   name: 'grains',
   position: 'top right',
   display: 'Grains'
 }, 
 {
+  id: 5,
   name: 'frozen',
   position: 'right center',
   display: 'Frozen'
 }, 
-{
+{ id: 6,
   name: 'misc',
   position: 'top left',
   display: 'Misc'
