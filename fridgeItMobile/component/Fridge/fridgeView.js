@@ -70,9 +70,9 @@ class Fridge extends Component {
           <View style={styles.buttons}>
             <Text style={styles.btn} onPress={this.handleSwitch}>Submit</Text>
             <View style={styles.twoWide}>
-              <Text style={[styles.btn, { width: 165} ]} onPress={this.getYourFridge}>Back To Your Fridge</Text>
+              <Text style={[styles.btn, { width: 165 } ]} onPress={this.getYourFridge}>Back To Your Fridge</Text>
               <Link to="/addition">
-                <Text style={[styles.btn, { width: 165} ]}>Add an Item</Text>
+                <Text style={[styles.btn, { width: 165, paddingTop: 5 } ]}>Add an Item to your Fridge</Text>
               </Link>
             </View>
           </View>
