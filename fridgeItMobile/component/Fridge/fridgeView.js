@@ -36,6 +36,7 @@ class Fridge extends Component {
     })
   };
 
+  
   getYourFridge = () => {
     const that = this;
     AsyncStorage.getItem('name').then((name) => {
@@ -64,7 +65,7 @@ class Fridge extends Component {
     return (
       <View>
         <View>
-          <Text style={{ fontSize: 20, margin:7, textAlign: 'center' }}>Find Another User's Fridge by E-mail</Text>
+          <Text style={{ fontSize: 20, margin:7, textAlign: 'center' }}>See Another User's Fridge by E-mail!</Text>
           <TextInput style={styles.textInput} onChangeText={(text) => this.setState({ otherUsernameText: text })} />
           <View style={styles.buttons}>
             <Text style={styles.btn} onPress={this.handleSwitch}>Submit</Text>

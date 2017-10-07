@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     color: 'white', 
     fontSize: 30, 
     textAlign: 'center',
-    marginTop: 100
+    marginTop: 40
   },
   splashText2: {
     color: 'white', 

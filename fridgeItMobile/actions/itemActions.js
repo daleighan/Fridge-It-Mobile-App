@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Alert } from 'react-native'
 
 //functions to get items and add items on front end 
 //uses reducers as part of promises to change state
@@ -26,7 +27,7 @@ export function addItem(item, id) {
       expiry: item.expiry
     })
       .then(({ data }) => {
-        alert('Item Added!');
+        alert('Item Added')
         dispatch({type: 'POST_ITEM_FULFILLED', payload: data});
         dispatch({type: 'NEW_ITEM_POSTED'});
       })
