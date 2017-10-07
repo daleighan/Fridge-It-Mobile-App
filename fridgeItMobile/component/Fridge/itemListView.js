@@ -19,26 +19,32 @@ const ItemList = (props) => {
 					}
 					return( 
 					<View key={item.id}>
-						<Text>{item.name}</Text>
-						<Text>Quantity: {item.quantity}</Text>
-						<Text>Expiration Date: {item.expiry || 'none'}</Text>
-						<Button title="+" onPress={(e) => {
-							props.actions.updateItem({
-								name: item.name,
-								quantity: item.quantity + 1,
-								type: item.type,
-							}, item.id);
-						}} />
-						<Button title="-" onPress={(e) => {
-							props.actions.updateItem({
-								name: item.name,
-								quantity: item.quantity - 1,
-								type: item.type,
-							}, item.id);
-						}} />
-						<Button title="X" onPress={(e) => {
-							props.actions.deleteItem(item.id);
-						}} />
+						<View style={styles.container1}>
+							<Text style={styles.large}>{item.name}</Text>
+							<Text style={styles.large}>Expiration: {item.expiry || 'none'}</Text>
+						</View>
+						<View style={styles.container1}>
+							<View style={styles.container2}>
+								<Text style={styles.large}>Quantity: {item.quantity}</Text>
+								<Text style={styles.large} onPress={(e) => {
+									props.actions.updateItem({
+										name: item.name,
+										quantity: item.quantity + 1,
+										type: item.type,
+									}, item.id);
+								}}>+</Text>
+								<Text style={styles.large} onPress={(e) => {
+									props.actions.updateItem({
+										name: item.name,
+										quantity: item.quantity - 1,
+										type: item.type,
+									}, item.id);
+								}}>--</Text>
+							</View>
+							<Text style={styles.large} onPress={(e) => {
+								props.actions.deleteItem(item.id);
+							}} >X</Text>
+						</View>
 					</View>
 					)
 				})
@@ -47,9 +53,25 @@ const ItemList = (props) => {
 		)
 	} else {
 		return (
-			<Text>No Items in This Category</Text>
+			<Text>You have no more items of this type!</Text>
 		)
 	}
 }
 
 export default ItemList;
+
+const styles = StyleSheet.create({
+	container1: {
+		flexDirection: 'row', 
+    justifyContent: 'space-between',
+    paddingLeft: 10,
+    paddingRight:10,
+	},
+	container2: {
+		flexDirection: 'row', 
+    justifyContent: 'space-between',
+	},
+	large: {
+		fontSize: 20
+	}
+});
