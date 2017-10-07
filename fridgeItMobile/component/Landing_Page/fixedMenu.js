@@ -40,6 +40,7 @@ const FixedMenu = () => {
         </View>
         <View> 
           <Text style={styles.splashText1}>Welcome to Fridge-It</Text>
+          <Text></Text>
           <Text style={styles.splashText2}>Meal planning made convenient and easy</Text>
         </View>
     	</View>
