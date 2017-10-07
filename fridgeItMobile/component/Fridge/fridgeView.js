@@ -70,9 +70,9 @@ class Fridge extends Component {
           <View style={styles.buttons}>
             <Text style={styles.btn} onPress={this.handleSwitch}>Submit</Text>
             <View style={styles.twoWide}>
-              <Text style={styles.btn} onPress={this.getYourFridge}>Back To Your Fridge</Text>
+              <Text style={[styles.btn, { width: 165} ]} onPress={this.getYourFridge}>Back To Your Fridge</Text>
               <Link to="/addition">
-                <Text style={styles.btn}>Add an Item</Text>
+                <Text style={[styles.btn, { width: 165} ]}>Add an Item</Text>
               </Link>
             </View>
           </View>
@@ -199,10 +199,8 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   twoWide: {
-    width: 360,
     flexDirection: 'row', 
-    justifyContent: 'flex-start',
-    marginRight: 100
+    justifyContent: 'space-between',
   },
   name: {
     padding: 15,
