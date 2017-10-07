@@ -95,10 +95,11 @@ const styles = StyleSheet.create({
 	},
 	operatorHolder2: {
 		width: 30,
+		height: 40,
 		marginLeft: 5,
+		marginTop: 8,
 		borderWidth: 0.5,
 		borderRadius: 20,
-		paddingTop: 5,
 	},
 	operator: {
 		fontSize: 24,
