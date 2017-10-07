@@ -64,8 +64,8 @@ class Fridge extends Component {
     return (
       <View>
         <View>
-          <Text>Find Another User's Fridge by E-mail</Text>
-          <TextInput onChangeText={(text) => this.setState({ otherUsernameText: text })} />
+          <Text style={{ fontSize: 20, margin:7, textAlign: 'center' }}>Find Another User's Fridge by E-mail</Text>
+          <TextInput style={styles.textInput} onChangeText={(text) => this.setState({ otherUsernameText: text })} />
           <View style={styles.buttons}>
             <Text style={styles.btn} onPress={this.handleSwitch}>Submit</Text>
             <View style={styles.twoWide}>
@@ -173,6 +173,13 @@ const styles = StyleSheet.create({
   buttons: {
     marginLeft: 12,
     marginRight: 12
+  },
+  textInput: {
+    marginTop: 15,
+    marginBottom: 15,
+    marginLeft: 30,
+    marginRight:30,
+    textAlign: 'center'
   },
   btn: {
     margin: 1,
