@@ -44,14 +44,15 @@ class ItemAddition extends Component {
 
 	render = () => {
 		return (
-			<View>
-				<Text>Add an Item</Text>
-				<Text>Item Name</Text>
+			<View style={styles.container}>
+				<Text style={styles.txtLarge}>Add an Item</Text>
+				<Text style={styles.txt}>Item Name</Text>
 				<TextInput onChangeText={(text) => this.setState({ itemName: text })} />
-				<Text>Item Quantity</Text>
+				<Text style={styles.txt}>Item Quantity</Text>
 				<TextInput defaultValue="0" onChangeText={(number) => this.setState({ itemQTY: number })} />
-				<Text>Food Type</Text>
+				<Text style={styles.txt}>Food Type</Text>
 				<Picker 
+					style={styles.picker}
 					selectedValue={this.state.foodType}
 					onValueChange={(itemValue, itemIndex) => this.setState({foodType: itemValue})
 				}>
@@ -62,11 +63,11 @@ class ItemAddition extends Component {
 					<Picker.Item label="frozen" value="frozen" />
 					<Picker.Item label="miscellaneous" value="misc" />
 				</Picker>
-				<Text>Expiration Date:</Text>
+				<Text style={styles.txt}>Expiration Date:</Text>
 				<DatePicker 
 					onDateChange={(date) => {this.setState({ date, })}}
 				/> 
-				<Button title="Submit" onPress={this.handleSubmit} />
+				<Text style={styles.btn} onPress={this.handleSubmit}>Submit</Text> 
 			</View>
 		)
 	}
@@ -86,3 +87,32 @@ const fridgeDispatch = (dispatch) => {
 };
 
 export default connect(fridgeState, fridgeDispatch)(ItemAddition);
+
+const styles = StyleSheet.create({
+	container: {
+		padding: 15,
+	},
+	btn: {
+		marginTop: 10,
+  	height: 50,
+    textAlign: 'center',
+		fontSize: 14,
+		borderWidth: 1,
+		borderRadius: 2,
+		padding: 13,
+		backgroundColor: '#3B86D2',
+		fontWeight: 'bold',
+		color: 'white'
+  },
+  txtLarge: {
+  	fontSize: 26,
+  	textAlign: 'center',
+  	marginBottom: 10
+  },
+  txt: {
+  	fontSize: 20
+  },
+  picker: {
+  	width: 360
+  }
+});

@@ -26,6 +26,7 @@ export function addItem(item, id) {
       expiry: item.expiry
     })
       .then(({ data }) => {
+        alert('Item Added!');
         dispatch({type: 'POST_ITEM_FULFILLED', payload: data});
         dispatch({type: 'NEW_ITEM_POSTED'});
       })
