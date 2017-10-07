@@ -121,18 +121,19 @@ class Fridge extends Component {
             </View>
             <ItemList fridge={fridge} actions={itemActions} type="produce" items={this.filterItems("produce")} />
           </View>
-          <View>
-            <View style={[styles.category, {backgroundColor: '#bad5dd'}]}>
-              <View>
-                <Text style={styles.type}>Frozen</Text>
-                <Image
-                  style={styles.img}
-                  source={require('./frozen.png')}
-                >
-                </Image>
-              </View>
-            <ItemList fridge={fridge} actions={itemActions} type="frozen" items={this.filterItems("frozen")} /> 
+
+          <View style={[styles.category, {backgroundColor: '#bad5dd'}]}>
+            <View style={styles.imageContain}>
+              <Text style={styles.type}>Frozen</Text>
+              <Image
+                style={styles.img}
+                source={require('./frozen.png')}
+              >
+              </Image>
+            </View>
+            <ItemList fridge={fridge} actions={itemActions} type="frozen" items={this.filterItems("frozen")} />
           </View>
+          <View>
           <View style={[styles.category, {backgroundColor: '#e5a5c2'}]}>
             <View style={styles.imageContain}>
               <Text style={styles.type}>Misc</Text>
@@ -146,6 +147,7 @@ class Fridge extends Component {
           </View>
         </View>
       </View>
+
     )
   }
 }
