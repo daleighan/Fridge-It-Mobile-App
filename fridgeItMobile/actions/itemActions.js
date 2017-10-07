@@ -23,6 +23,7 @@ export function addItem(item, id) {
       type: item.type,
       user: item.user,
       fridgeId: id,
+      expiry: item.expiry
     })
       .then(({ data }) => {
         dispatch({type: 'POST_ITEM_FULFILLED', payload: data});

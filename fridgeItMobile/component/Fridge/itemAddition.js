@@ -23,7 +23,8 @@ class ItemAddition extends Component {
 			foodType: 'produce',
 			expirationDate: '',
 			itemName: '',
-			itemQTY: 0
+			itemQTY: 0,
+			date: ''
 		}
 	}
 
@@ -34,7 +35,8 @@ class ItemAddition extends Component {
 				name: this.state.itemName,
 				quantity: this.state.itemQTY,
 				type: this.state.foodType,
-				user: user
+				user: user,
+				expiry: this.state.date
 			}
 			itemActions.addItem(item, fridge.id);
 		});
