@@ -54,3 +54,6 @@ fastlane/screenshots
 
 # firebase config
 firebase.json
+
+my-release-key.keystore
+cradle.properties
