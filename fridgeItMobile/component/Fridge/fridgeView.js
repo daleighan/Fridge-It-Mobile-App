@@ -76,22 +76,10 @@ class Fridge extends Component {
             </View>
           </View>
         </View>
-        <View>
           <Text style={styles.name}>{fridge.name}'s Fridge</Text>
           <View style={styles.category}>
             <View style={styles.imageContain}>
-              <Text>Frozen</Text>
-              <Image
-                style={styles.img}
-                source={require('./frozen.png')}
-              >
-              </Image>
-            </View>
-            <ItemList fridge={fridge} actions={itemActions} type="frozen" items={this.filterItems("frozen")} /> 
-          </View>
-          <View style={styles.category}>
-            <View style={styles.imageContain}>
-              <Text>Protein</Text>
+              <Text style={styles.type}>Protein</Text>
               <Image
                 style={styles.img}
                 source={require('./protein.png')}
@@ -102,7 +90,7 @@ class Fridge extends Component {
           </View>
           <View style={styles.category}>
             <View style={styles.imageContain}>
-              <Text>Grains</Text>
+              <Text style={styles.type}>Grains</Text>
               <Image
                 style={styles.img}
                 source={require('./grains.png')}
@@ -113,7 +101,7 @@ class Fridge extends Component {
           </View>
           <View style={styles.category}>
             <View style={styles.imageContain}>
-              <Text>Dairy</Text>
+              <Text style={styles.type}>Dairy</Text>
               <Image
                 style={styles.img}
                 source={require('./dairy.png')}
@@ -124,7 +112,7 @@ class Fridge extends Component {
           </View>
           <View style={styles.category}>
             <View style={styles.imageContain}>
-              <Text>Produce</Text>
+              <Text style={styles.type}>Produce</Text>
               <Image
                 style={styles.img}
                 source={require('./produce.png')}
@@ -135,7 +123,7 @@ class Fridge extends Component {
           </View>
           <View style={styles.category}>
             <View style={styles.imageContain}>
-              <Text>Misc</Text>
+              <Text style={styles.type}>Misc</Text>
               <Image
                 style={styles.img}
                 source={require('./misc.png')}
@@ -143,6 +131,18 @@ class Fridge extends Component {
               </Image>
             </View>
             <ItemList fridge={fridge} actions={itemActions} type="misc" items={this.filterItems("misc")} />
+          </View>
+          <View>
+          <View style={styles.category}>
+            <View style={styles.imageContain}>
+              <Text style={styles.type}>Frozen</Text>
+              <Image
+                style={styles.img}
+                source={require('./frozen.png')}
+              >
+              </Image>
+            </View>
+            <ItemList fridge={fridge} actions={itemActions} type="frozen" items={this.filterItems("frozen")} /> 
           </View>
         </View>
       </View>
@@ -209,8 +209,15 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
   imageContain: {
+    paddingTop:15,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingRight: 15,
+  },
+  type: {
+    paddingTop: 10,
+    paddingLeft: 15,
+    fontSize: 22
   },
   img: {
     width: 55, 
